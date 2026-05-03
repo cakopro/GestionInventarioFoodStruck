@@ -52,7 +52,7 @@ namespace GestionInventarioFoodStruck.Views
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            abrirNuevoPanel(new Ventas());
         }
 
         private void btnProducto_Click(object sender, EventArgs e)

@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\VentasDAO.cs" />
     <Compile Include="Dao\Conexion.cs" />
     <Compile Include="Dao\InsumosDao.cs" />
     <Compile Include="Dao\ProductosDao.cs" />
@@ -87,6 +88,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GestionInventarioDBDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GestionInventarioDBDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionInventarioDBDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GestionInventarioDBDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionInventarioDBDataSet5.xsd</DependentUpon>
     </Compile>
     <Compile Include="Model\Insumos.cs" />
     <Compile Include="Model\ProductosClase.cs" />
@@ -118,6 +129,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\EditarVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EditarVentas.Designer.cs">
+      <DependentUpon>EditarVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Ventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Ventas.Designer.cs">
+      <DependentUpon>Ventas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\InsumosView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +187,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\EditarVentas.resx">
+      <DependentUpon>EditarVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\InsumosView.resx">
       <DependentUpon>InsumosView.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\proveedorescs.resx">
       <DependentUpon>proveedorescs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Ventas.resx">
+      <DependentUpon>Ventas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GestionInventarioDBDataSet.xsc">
       <DependentUpon>GestionInventarioDBDataSet.xsd</DependentUpon>
@@ -219,6 +248,28 @@
     </None>
     <None Include="GestionInventarioDBDataSet3.xss">
       <DependentUpon>GestionInventarioDBDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="GestionInventarioDBDataSet4.xsc">
+      <DependentUpon>GestionInventarioDBDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="GestionInventarioDBDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GestionInventarioDBDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GestionInventarioDBDataSet4.xss">
+      <DependentUpon>GestionInventarioDBDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="GestionInventarioDBDataSet5.xsc">
+      <DependentUpon>GestionInventarioDBDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="GestionInventarioDBDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GestionInventarioDBDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GestionInventarioDBDataSet5.xss">
+      <DependentUpon>GestionInventarioDBDataSet5.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
