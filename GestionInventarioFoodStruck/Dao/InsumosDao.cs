@@ -45,7 +45,93 @@ namespace GestionInventarioFoodStruck.Dao
             finally { conectarse.Close(); }
             return lista;
         }
-    
+
+        public bool agregarInsumo(Insumos insumo)
+        {
+            Conexion instancia = Conexion.getInstance();
+            SqlConnection conectarse = instancia.Conectarse();
+            try
+            {
+                string query = "INSERT INTO Insumos (Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id_Proveedor) " +
+                               "VALUES (@Nombre, @StockActual, @UnidadMedida, @PrecioUnitario, @FechaCaducidad, @Id_Proveedor)";
+
+                SqlCommand comando = new SqlCommand(query, conectarse);
+                comando.Parameters.AddWithValue("@Nombre", insumo.Nombre1);
+                comando.Parameters.AddWithValue("@StockActual", insumo.StockActual1);
+                comando.Parameters.AddWithValue("@UnidadMedida", insumo.UnidadMedida1);
+                comando.Parameters.AddWithValue("@PrecioUnitario", insumo.PrecioUnitario1);
+                comando.Parameters.AddWithValue("@FechaCaducidad", insumo.FechaCaducidad1);
+                comando.Parameters.AddWithValue("@Id_Proveedor", insumo.Id_Proveedor1);
+
+                conectarse.Open();
+                comando.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Error al agregar: {e.Message}");
+                return false;
+            }
+            finally { conectarse.Close(); }
+        }
+
+        public bool editarInsumo(Insumos insumo)
+        {
+            Conexion instancia = Conexion.getInstance();
+            SqlConnection conectarse = instancia.Conectarse();
+            try
+            {
+                string query = "UPDATE Insumos SET Nombre = @Nombre, StockActual = @StockActual, " +
+                               "UnidadMedida = @UnidadMedida, PrecioUnitario = @PrecioUnitario, " +
+                               "FechaCaducidad = @FechaCaducidad, Id_Proveedor = @Id_Proveedor WHERE Id = @Id";
+
+                SqlCommand comando = new SqlCommand(query, conectarse);
+                comando.Parameters.AddWithValue("@Nombre", insumo.Nombre1);
+                comando.Parameters.AddWithValue("@StockActual", insumo.StockActual1);
+                comando.Parameters.AddWithValue("@UnidadMedida", insumo.UnidadMedida1);
+                comando.Parameters.AddWithValue("@PrecioUnitario", insumo.PrecioUnitario1);
+                comando.Parameters.AddWithValue("@FechaCaducidad", insumo.FechaCaducidad1);
+                comando.Parameters.AddWithValue("@Id_Proveedor", insumo.Id_Proveedor1);
+                comando.Parameters.AddWithValue("@Id", insumo.Id); 
+
+                conectarse.Open();
+                comando.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Error al editar: {e.Message}");
+                return false;
+            }
+            finally { conectarse.Close(); }
+        }
+
+        public bool eliminarInsumo(int id)
+        {
+            Conexion instancia = Conexion.getInstance();
+            SqlConnection conectarse = instancia.Conectarse();
+            try
+            {
+               
+                string query = "DELETE FROM Insumos WHERE Id = @Id";
+
+                SqlCommand comando = new SqlCommand(query, conectarse);
+                comando.Parameters.AddWithValue("@Id", id);
+
+                conectarse.Open();
+
+                
+                int filasAfectadas = comando.ExecuteNonQuery();
+                return filasAfectadas > 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Error al eliminar de la base de datos: {e.Message}");
+                return false;
+            }
+            finally { conectarse.Close(); }
+        }
+
 
     }
 }
