@@ -58,7 +58,7 @@ namespace GestionInventarioFoodStruck.Views
             }
             ProductosClase productoNuevo = new ProductosClase();
             productoNuevo.Nombre1 = txtNombre.Text;
-            productoNuevo.PrecioVenta1 = int.Parse(txtPrecio.Text);
+            productoNuevo.PrecioVenta1 = float.Parse(txtPrecio.Text);
 
             bool exito = productosDao.GuardarProductoConReceta(productoNuevo, listaTemporal);
 

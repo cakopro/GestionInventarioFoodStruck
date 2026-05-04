@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.dataReceta = new System.Windows.Forms.DataGridView();
+            this.nombreCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,9 +42,6 @@
             this.cmbIngredientes = new System.Windows.Forms.ComboBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.nombreCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataReceta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +64,30 @@
             this.dataReceta.Size = new System.Drawing.Size(732, 419);
             this.dataReceta.TabIndex = 0;
             // 
+            // nombreCol
+            // 
+            this.nombreCol.DataPropertyName = "NombreInsumo";
+            this.nombreCol.HeaderText = "Insumo";
+            this.nombreCol.MinimumWidth = 10;
+            this.nombreCol.Name = "nombreCol";
+            this.nombreCol.ReadOnly = true;
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.DataPropertyName = "CantidadRequerida1";
+            this.colCantidad.HeaderText = "Cantidad Requerida";
+            this.colCantidad.MinimumWidth = 10;
+            this.colCantidad.Name = "colCantidad";
+            this.colCantidad.ReadOnly = true;
+            // 
+            // colMedida
+            // 
+            this.colMedida.DataPropertyName = "UnidadMedida1";
+            this.colMedida.HeaderText = "Medida unidad";
+            this.colMedida.MinimumWidth = 10;
+            this.colMedida.Name = "colMedida";
+            this.colMedida.ReadOnly = true;
+            // 
             // btnAgregar
             // 
             this.btnAgregar.Location = new System.Drawing.Point(801, 317);
@@ -76,7 +100,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(801, 402);
+            this.btnGuardar.Location = new System.Drawing.Point(801, 381);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(112, 53);
             this.btnGuardar.TabIndex = 2;
@@ -148,30 +172,6 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(181, 31);
             this.txtPrecio.TabIndex = 10;
-            // 
-            // nombreCol
-            // 
-            this.nombreCol.DataPropertyName = "NombreInsumo";
-            this.nombreCol.HeaderText = "Insumo";
-            this.nombreCol.MinimumWidth = 10;
-            this.nombreCol.Name = "nombreCol";
-            this.nombreCol.ReadOnly = true;
-            // 
-            // colCantidad
-            // 
-            this.colCantidad.DataPropertyName = "CantidadRequerida1";
-            this.colCantidad.HeaderText = "Cantidad Requerida";
-            this.colCantidad.MinimumWidth = 10;
-            this.colCantidad.Name = "colCantidad";
-            this.colCantidad.ReadOnly = true;
-            // 
-            // colMedida
-            // 
-            this.colMedida.DataPropertyName = "UnidadMedida1";
-            this.colMedida.HeaderText = "Medida unidad";
-            this.colMedida.MinimumWidth = 10;
-            this.colMedida.Name = "colMedida";
-            this.colMedida.ReadOnly = true;
             // 
             // AgregarProducto
             // 
