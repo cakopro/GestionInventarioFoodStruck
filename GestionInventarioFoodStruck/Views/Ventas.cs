@@ -56,8 +56,10 @@ namespace GestionInventarioFoodStruck.Views
             {
                 netoTotal = 0;
 
-               
-                foreach (GestionInventarioDBDataSet5.DetalleVentaRow fila in this.gestionInventarioDBDataSet5.DetalleVenta)
+                
+                var ds = (GestionInventarioDBDataSet5)detalleVentaBindingSource6.DataSource;
+
+                foreach (var fila in ds.DetalleVenta)
                 {
                     
                     if (fila.RowState != DataRowState.Deleted && fila.RowState != DataRowState.Detached)
@@ -66,15 +68,12 @@ namespace GestionInventarioFoodStruck.Views
                     }
                 }
 
-                
                 ivaTotal = (int)Math.Round(netoTotal * 0.19);
                 totalAPagar = netoTotal + ivaTotal;
 
                 
                 lblNeto.Text = "Neto: " + netoTotal.ToString("C0");
                 lblIVA.Text = "IVA (19%): " + ivaTotal.ToString("C0");
-
-                
                 lblTotal.Text = "Total a Pagar: " + totalAPagar.ToString("C0");
             }
             catch (Exception ex)
@@ -90,39 +89,43 @@ namespace GestionInventarioFoodStruck.Views
             try
             {
                 DataRowView producto = (DataRowView)cmbProducto.SelectedItem;
-
-                
-                int idProd = Convert.ToInt32(producto["Id"]);
-                string nombreProd = producto["Nombre"].ToString();
                 int precio = Convert.ToInt32(producto["PrecioVenta"]);
                 int cant = (int)numCantidad.Value;
 
-               
-                var nuevaFila = this.gestionInventarioDBDataSet5.DetalleVenta.NewDetalleVentaRow();
+                
+                
+                var ds = (GestionInventarioDBDataSet5)detalleVentaBindingSource6.DataSource;
+                var tabla = ds.DetalleVenta;
 
-                nuevaFila.Id_Producto = idProd;
-                nuevaFila.NombreProducto = nombreProd; 
+                
+                var nuevaFila = tabla.NewDetalleVentaRow();
+                nuevaFila.Id_Venta = 0;
+                nuevaFila.Id_Producto = Convert.ToInt32(producto["Id"]);
+                nuevaFila.NombreProducto = producto["Nombre"].ToString();
                 nuevaFila.Cantidad = cant;
                 nuevaFila.Subtotal = precio * cant;
-                nuevaFila.Id_Venta = 0;
 
-                this.gestionInventarioDBDataSet5.DetalleVenta.AddDetalleVentaRow(nuevaFila);
+                
+                tabla.AddDetalleVentaRow(nuevaFila);
+
                 ActualizarTotales();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error al agregar: " + ex.Message);
             }
         }
 
 
-        
+
         private void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
             
-            if (this.gestionInventarioDBDataSet5.DetalleVenta.Rows.Count == 0)
+            var tablaDetalle = this.gestionInventarioDBDataSet51.DetalleVenta;
+
+            if (tablaDetalle.Rows.Count == 0)
             {
-                MessageBox.Show("El carrito está vacío. Debe agregar al menos un producto para finalizar la venta.",
+                MessageBox.Show("El carrito está vacío. Debe agregar al menos un producto.",
                                 "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -130,44 +133,38 @@ namespace GestionInventarioFoodStruck.Views
             try
             {
                 
-                
-                this.ventasTableAdapter.Insert(DateTime.Now, totalAPagar, netoTotal, ivaTotal);
+                this.ventasTableAdapter.Insert(DateTime.Now, totalAPagar, ivaTotal, netoTotal);
 
-                
                 
                 int idVentaActual = (int)this.ventasTableAdapter.GetData().Last().Id;
 
                 
-                foreach (GestionInventarioDBDataSet5.DetalleVentaRow fila in this.gestionInventarioDBDataSet5.DetalleVenta)
+                foreach (GestionInventarioDBDataSet5.DetalleVentaRow fila in tablaDetalle)
                 {
-               
                     if (fila.RowState != DataRowState.Deleted && fila.RowState != DataRowState.Detached)
                     {
-                        
                         this.detalleVentaTableAdapter.Insert(
-                            idVentaActual,       
-                            fila.Id_Producto,    
-                            fila.NombreProducto, 
-                            fila.Cantidad,       
-                            fila.Subtotal        
+                            idVentaActual,
+                            fila.Id_Producto,
+                            fila.NombreProducto,
+                            fila.Cantidad,
+                            fila.Subtotal
                         );
                     }
                 }
 
-                
-                MessageBox.Show("Venta guardada exitosamente en el historial", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Venta guardada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 
-                this.gestionInventarioDBDataSet5.DetalleVenta.Clear();
-
-                
+                tablaDetalle.Clear();
                 this.ventasTableAdapter.Fill(this.gestionInventarioDBDataSet5.Ventas);
 
+                
                 ActualizarTotales();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error crítico al finalizar la venta: " + ex.Message, "Error de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error crítico: " + ex.Message, "Error de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
