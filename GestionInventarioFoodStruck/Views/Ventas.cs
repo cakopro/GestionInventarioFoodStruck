@@ -1,265 +1,192 @@
-﻿using System;
+﻿using GestionInventarioFoodStruck.Dao;
+using GestionInventarioFoodStruck.Model;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestionInventarioFoodStruck.Views
 {
     public partial class Ventas : Form
     {
-        
-        
-        GestionInventarioDBDataSet4 ds4 = new GestionInventarioDBDataSet4();
-        GestionInventarioDBDataSet4TableAdapters.ProductosTableAdapter productosTableAdapter = new GestionInventarioDBDataSet4TableAdapters.ProductosTableAdapter();
-
-        
-        int netoTotal = 0;
-        int ivaTotal = 0;
-        int totalAPagar = 0;
+        ProductosDao productosDao = new ProductosDao();
+        VentasDao ventasDao = new VentasDao();
+        List<ProductosClase> listaProductos = new List<ProductosClase>();
+        List<DetalleVenta> detallesVenta = new List<DetalleVenta>();
 
         public Ventas()
         {
             InitializeComponent();
+            CargarProductos();
+            dgvDetalle.AutoGenerateColumns = false;
         }
-
-        private void Ventas_Load(object sender, EventArgs e)
+        void CargarProductos()
         {
-            
-            this.detalleVentaTableAdapter.Fill(this.gestionInventarioDBDataSet51.DetalleVenta);
-            
-            this.detalleVentaTableAdapter.Fill(this.gestionInventarioDBDataSet51.DetalleVenta);
-            try
-            {
-                
-                this.productosTableAdapter.Fill(this.ds4.Productos);
+            listaProductos = productosDao.ObtenerProductos();
 
-                
-                this.ventasTableAdapter.Fill(this.gestionInventarioDBDataSet5.Ventas);
+            cmbProducto.DataSource = null;
+            cmbProducto.DataSource = listaProductos;
 
-                
-                cmbProducto.DataSource = this.ds4.Productos;
-                cmbProducto.DisplayMember = "Nombre";
-                cmbProducto.ValueMember = "Id";
-
-                cmbProducto.SelectedIndex = -1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar datos: " + ex.Message);
-            }
+            cmbProducto.DisplayMember = "Nombre1";
+            cmbProducto.ValueMember = "Id1";
         }
-
-        private void ActualizarTotales()
+        void ActualizarDetalle()
         {
-            try
-            {
-                netoTotal = 0;
+            dgvDetalle.DataSource = null;
+            dgvDetalle.DataSource = detallesVenta;
 
-                
-                var ds = (GestionInventarioDBDataSet5)detalleVentaBindingSource6.DataSource;
-
-                foreach (var fila in ds.DetalleVenta)
-                {
-                    
-                    if (fila.RowState != DataRowState.Deleted && fila.RowState != DataRowState.Detached)
-                    {
-                        netoTotal += Convert.ToInt32(fila.Subtotal);
-                    }
-                }
-
-                ivaTotal = (int)Math.Round(netoTotal * 0.19);
-                totalAPagar = netoTotal + ivaTotal;
-
-                
-                lblNeto.Text = "Neto: " + netoTotal.ToString("C0");
-                lblIVA.Text = "IVA (19%): " + ivaTotal.ToString("C0");
-                lblTotal.Text = "Total a Pagar: " + totalAPagar.ToString("C0");
-            }
-            catch (Exception ex)
-            {
-                lblTotal.Text = "Total a Pagar: $0";
-            }
         }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
+        void CalcularTotal()
         {
-            if (cmbProducto.SelectedItem == null) return;
+            float subtotal = detallesVenta.Sum(x => x.Subtotal);
 
-            try
-            {
-                DataRowView producto = (DataRowView)cmbProducto.SelectedItem;
-                int precio = Convert.ToInt32(producto["PrecioVenta"]);
-                int cant = (int)numCantidad.Value;
+            float iva = subtotal * 0.19f;
 
-                
-                
-                var ds = (GestionInventarioDBDataSet5)detalleVentaBindingSource6.DataSource;
-                var tabla = ds.DetalleVenta;
+            float total = subtotal + iva;
 
-                
-                var nuevaFila = tabla.NewDetalleVentaRow();
-                nuevaFila.Id_Venta = 0;
-                nuevaFila.Id_Producto = Convert.ToInt32(producto["Id"]);
-                nuevaFila.NombreProducto = producto["Nombre"].ToString();
-                nuevaFila.Cantidad = cant;
-                nuevaFila.Subtotal = precio * cant;
+            lblIVA.Text = "IVA: $" + iva.ToString("N0");
 
-                
-                tabla.AddDetalleVentaRow(nuevaFila);
-
-                ActualizarTotales();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar: " + ex.Message);
-            }
-        }
-
-
-
-        private void btnFinalizarCompra_Click(object sender, EventArgs e)
-        {
-            
-            var tablaDetalle = this.gestionInventarioDBDataSet51.DetalleVenta;
-
-            if (tablaDetalle.Rows.Count == 0)
-            {
-                MessageBox.Show("El carrito está vacío. Debe agregar al menos un producto.",
-                                "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                
-                this.ventasTableAdapter.Insert(DateTime.Now, totalAPagar, ivaTotal, netoTotal);
-
-                
-                int idVentaActual = (int)this.ventasTableAdapter.GetData().Last().Id;
-
-                
-                foreach (GestionInventarioDBDataSet5.DetalleVentaRow fila in tablaDetalle)
-                {
-                    if (fila.RowState != DataRowState.Deleted && fila.RowState != DataRowState.Detached)
-                    {
-                        this.detalleVentaTableAdapter.Insert(
-                            idVentaActual,
-                            fila.Id_Producto,
-                            fila.NombreProducto,
-                            fila.Cantidad,
-                            fila.Subtotal
-                        );
-                    }
-                }
-
-                MessageBox.Show("Venta guardada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                
-                tablaDetalle.Clear();
-                this.ventasTableAdapter.Fill(this.gestionInventarioDBDataSet5.Ventas);
-
-                
-                ActualizarTotales();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error crítico: " + ex.Message, "Error de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            lblTotal.Text = "TOTAL: $" + total.ToString("N0");
         }
 
         private void cmbProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            if (cmbProducto.SelectedItem != null && cmbProducto.SelectedItem is DataRowView)
+            if (cmbProducto.SelectedItem != null)
             {
-                try
-                {
-                    
-                    DataRowView producto = (DataRowView)cmbProducto.SelectedItem;
+                ProductosClase producto = (ProductosClase)cmbProducto.SelectedItem;
 
-                    
-                    int precio = Convert.ToInt32(producto["PrecioVenta"]);
-
-                    
-                    lblPrecio.Text = precio.ToString("C0");
-                }
-                catch (Exception ex)
-                {
-                    lblPrecio.Text = "$0";
-                }
-            }
-            else
-            {
-                
-                lblPrecio.Text = "$0";
+                lblPrecio.Text = "$" + producto.PrecioVenta1.ToString("N0");
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            
-            if (dgvDetalleVenta.CurrentRow != null && dgvDetalleVenta.CurrentRow.DataBoundItem != null)
+            if (cmbProducto.SelectedItem == null)
             {
-                try
-                {
-                    
-                    DataRowView filaActual = (DataRowView)dgvDetalleVenta.CurrentRow.DataBoundItem;
+                MessageBox.Show("Seleccione un producto");
+                return;
+            }
 
-                    
-                    filaActual.Delete();
+            if (numericUpDown1.Value <= 0)
+            {
+                MessageBox.Show("Ingrese cantidad");
+                return;
+            }
 
-                    
-                    ActualizarTotales();
+            ProductosClase producto = (ProductosClase)cmbProducto.SelectedItem;
 
-                    MessageBox.Show("Producto quitado del detalle.", "Food Truck");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al eliminar: " + ex.Message);
-                }
+            DetalleVenta detalle = new DetalleVenta()
+            {
+                IdProducto = producto.Id1,
+                Producto = producto.Nombre1,
+                Precio = producto.PrecioVenta1,
+                Cantidad = (int)numericUpDown1.Value
+            };
+
+            detallesVenta.Add(detalle);
+
+            ActualizarDetalle();
+
+            CalcularTotal();
+
+            numericUpDown1.Value = 1;
+        }
+        void CargarVentas()
+        {
+            this.ventasTableAdapter.Fill(this.gestionInventarioDBDataSet.Ventas);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (txtCliente.Text == "")
+            {
+                MessageBox.Show("Ingrese nombre del cliente");
+                return;
+            }
+
+            if (detallesVenta.Count == 0)
+            {
+                MessageBox.Show("Agregue productos");
+                return;
+            }
+
+            float subtotal = detallesVenta.Sum(x => x.Subtotal);
+
+            float iva = subtotal * 0.19f;
+
+            Venta venta = new Venta()
+            {
+                NombreCliente = txtCliente.Text,
+                Fecha = DateTime.Now,
+                IVA = iva,
+                Detalles = detallesVenta
+            };
+
+            bool respuesta = ventasDao.GuardarVenta(venta);
+
+            if (respuesta)
+            {
+                MessageBox.Show("Venta guardada correctamente");
+                CargarVentas();
+
+                this.ventasTableAdapter.Fill(this.gestionInventarioDBDataSet.Ventas);
+                this.detalleVentaTableAdapter.Fill(this.gestionInventarioDBDataSet.DetalleVenta);
+
+                detallesVenta.Clear();
+
+                ActualizarDetalle();
+
+                CalcularTotal();
+
+                txtCliente.Clear();
+
+                numericUpDown1.Value = 1;
             }
             else
             {
-                MessageBox.Show("Por favor, seleccione una fila en el detalle para eliminar.");
+                MessageBox.Show("Error al guardar");
             }
         }
 
-        private void btnEditar_Click_1(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            if (dgvDetalleVenta.CurrentRow != null)
+            if (dgvDetalle.CurrentRow != null)
             {
-                var fila = (GestionInventarioDBDataSet5.DetalleVentaRow)((DataRowView)dgvDetalleVenta.CurrentRow.DataBoundItem).Row;
+                DetalleVenta itemSeleccionado = (DetalleVenta)dgvDetalle.CurrentRow.DataBoundItem;
 
-                Form2 frmEditar = new Form2();
-
-                frmEditar.NombreProducto = fila.NombreProducto;
-                frmEditar.Cantidad = (int)fila.Cantidad;
-
-                if (fila.Cantidad > 0)
+                if (itemSeleccionado != null)
                 {
-                    frmEditar.PrecioUnitario = (int)(fila.Subtotal / fila.Cantidad);
-                }
-                else
-                {
-                    frmEditar.PrecioUnitario = 0;
-                }
-
-                if (frmEditar.ShowDialog() == DialogResult.OK)
-                {
-                    
-                    
-                    fila.NombreProducto = frmEditar.NombreProducto;
-                    fila.Cantidad = frmEditar.Cantidad;
-                    fila.Subtotal = frmEditar.Cantidad * frmEditar.PrecioUnitario;
-
-                    ActualizarTotales();
+                    detallesVenta.Remove(itemSeleccionado);
+                    ActualizarDetalle();
+                    CalcularTotal();
                 }
             }
             else
             {
-                MessageBox.Show("Seleccione un producto de la tabla para editar.");
+                MessageBox.Show("Seleccione un producto");
             }
+        }
+
+        private void Ventas_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                this.ventasTableAdapter.Fill(this.gestionInventarioDBDataSet.Ventas);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al cargar datos: " + ex.Message);
+            }
+
+
         }
     }
 }
+

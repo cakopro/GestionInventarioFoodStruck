@@ -132,6 +132,35 @@ namespace GestionInventarioFoodStruck.Dao
             finally { conectarse.Close(); }
         }
 
+        public bool existeInsumo(string nombreInsumo, int idExcluir = 0)
+        {
+            Conexion instancia = Conexion.getInstance();
+            SqlConnection conectarse = instancia.Conectarse();
+            try
+            {
 
+                string query = "SELECT COUNT(*) FROM Insumos WHERE LTRIM(RTRIM(Nombre)) = @Nombre AND Id != @IdExcluir";
+
+                SqlCommand comando = new SqlCommand(query, conectarse);
+
+
+                comando.Parameters.AddWithValue("@Nombre", nombreInsumo.Trim());
+                comando.Parameters.AddWithValue("@IdExcluir", idExcluir);
+
+                conectarse.Open();
+
+
+                int cantidad = Convert.ToInt32(comando.ExecuteScalar());
+
+
+                return cantidad > 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Error al validar duplicado: {e.Message}");
+                return false;
+            }
+            finally { conectarse.Close(); }
+        }
     }
 }

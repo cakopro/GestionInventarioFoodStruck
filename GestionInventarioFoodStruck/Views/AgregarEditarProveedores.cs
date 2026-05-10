@@ -54,6 +54,14 @@ namespace GestionInventarioFoodStruck.Views
                 provedor.Correo = txtCorreo.Text;
                 provedor.Empresa = txtEmpresa.Text;
                 provedor.Direccion = txtDireccion.Text;
+                if (cmbEstado.SelectedIndex == 0)
+                {
+                    provedor.Estado = true;
+                }
+                else
+                {
+                    provedor.Estado = false;
+                }
                 bool respuesta = proveedoresDao.editarProveedor(provedor);
                 if (respuesta)
                 {
@@ -75,6 +83,7 @@ namespace GestionInventarioFoodStruck.Views
                 provedorNuevo.Correo = txtCorreo.Text;
                 provedorNuevo.Empresa = txtEmpresa.Text;
                 provedorNuevo.Direccion = txtDireccion.Text;
+                provedorNuevo.Estado = true;
                 bool respuesta = proveedoresDao.agregarProveedor(provedorNuevo);
                 if (respuesta)
                 {
@@ -105,11 +114,21 @@ namespace GestionInventarioFoodStruck.Views
                 txtEmpresa.ForeColor = Color.Black;
                 txtDireccion.Text = provedor.Direccion;
                 txtDireccion.ForeColor = Color.Black;
+                if(provedor.Estado)
+                {
+                    cmbEstado.SelectedIndex = 0;
+                }
+                else
+                {
+                    cmbEstado.SelectedIndex = 1;
+                }
             }
             else
             {
                 this.Text = "Agregar proveedor";
                 btnAccion.Text = "Agregar";
+                lblEstado.Visible = false;
+                cmbEstado.Visible=false;
                 lblTitulo.Text = "Agregar";
             }
         }
@@ -239,6 +258,11 @@ namespace GestionInventarioFoodStruck.Views
                 txtDireccion.Text = "";
                 txtDireccion.ForeColor = Color.Black;
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

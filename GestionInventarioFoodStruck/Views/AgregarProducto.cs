@@ -17,12 +17,35 @@ namespace GestionInventarioFoodStruck.Views
         public InsumosDao insumos = new InsumosDao();
         List<Receta> listaTemporal = new List<Receta>();
         ProductosDao productosDao = new ProductosDao();
-        public AgregarProducto()
+        private ProductosClase productoExistente = null;
+        public AgregarProducto(ProductosClase prod = null, List<Receta> receta = null)
         {
             InitializeComponent();
+            this.productoExistente = prod;
+            this.listaTemporal = receta ?? new List<Receta>();
+
             dataReceta.AutoGenerateColumns = false;
             cargarCatalogo();
+            configuracionInicial();
 
+        }
+
+        private void configuracionInicial()
+        {
+            if (productoExistente != null)
+            {
+                this.Text = "Editar Producto";
+                lblTitulo.Text = "Modificando: " + productoExistente.Nombre1;
+                txtNombre.Text = productoExistente.Nombre1;
+
+                dataReceta.DataSource = listaTemporal;
+            }
+            else
+            {
+                this.Text = "Nuevo Producto";
+                lblTitulo.Text = "Agregar Producto";
+                dataReceta.DataSource = null;
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -35,11 +58,12 @@ namespace GestionInventarioFoodStruck.Views
             nueva.NombreInsumo = cmbIngredientes.Text;
             nueva.CantidadRequerida1 = float.Parse(txtCantidad.Text);
             nueva.UnidadMedida1 = seleccionado.UnidadMedida1;
+
             listaTemporal.Add(nueva);
             dataReceta.DataSource = null;
             dataReceta.DataSource = listaTemporal;
             txtNombre.Enabled = false;
-            txtPrecio.Enabled = false;
+            ActualizarPantallaYPrecio();
         }
         void cargarCatalogo()
         {
@@ -49,24 +73,114 @@ namespace GestionInventarioFoodStruck.Views
             cmbIngredientes.ValueMember = "Id";
         }
 
+        private float calcularNetoRenglon(float precioUnitario, float cantidad)
+        {
+            return precioUnitario * cantidad;
+        }
+        private void ActualizarPantallaYPrecio()
+        {
+            dataReceta.DataSource = null;
+            dataReceta.DataSource = listaTemporal;
+
+            float subtotalNeto = 0;
+
+            foreach (var item in listaTemporal)
+            {
+                var insumo = ((List<Insumos>)cmbIngredientes.DataSource)
+                             .FirstOrDefault(i => i.Id == item.Id_Insumo1);
+
+                if (insumo != null)
+                {
+                    subtotalNeto += calcularNetoRenglon(insumo.PrecioUnitario1, item.CantidadRequerida1);
+                }
+            }
+
+            float iva = subtotalNeto * 0.19f;
+            float totalFinal = subtotalNeto + iva;
+
+            lblPrecioSumado.Text = $"Neto: {subtotalNeto:C0} | IVA: {iva:C0} | Total: {totalFinal:C0}";
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtNombre.Text) || listaTemporal.Count == 0)
             {
-                MessageBox.Show("Debe ingresar el nombre del producto y al menos un ingrediente.");
+                MessageBox.Show("Faltan datos.");
                 return;
             }
-            ProductosClase productoNuevo = new ProductosClase();
-            productoNuevo.Nombre1 = txtNombre.Text;
-            productoNuevo.PrecioVenta1 = float.Parse(txtPrecio.Text);
 
-            bool exito = productosDao.GuardarProductoConReceta(productoNuevo, listaTemporal);
+            float subtotalParaDB = 0;
+            foreach (var item in listaTemporal)
+            {
+                var insumo = ((List<Insumos>)cmbIngredientes.DataSource)
+                             .FirstOrDefault(i => i.Id == item.Id_Insumo1);
+                if (insumo != null)
+                    subtotalParaDB += calcularNetoRenglon(insumo.PrecioUnitario1, item.CantidadRequerida1);
+            }
+            float precioFinalConIva = subtotalParaDB * 1.19f;
+
+            bool exito;
+
+            if (productoExistente != null)
+            {
+                productoExistente.Nombre1 = txtNombre.Text;
+                productoExistente.PrecioVenta1 = precioFinalConIva; 
+                exito = productosDao.ActualizarProductoConReceta(productoExistente, listaTemporal);
+            }
+            else
+            {
+                ProductosClase productoNuevo = new ProductosClase();
+                productoNuevo.Nombre1 = txtNombre.Text;
+                productoNuevo.PrecioVenta1 = precioFinalConIva; 
+                productoNuevo.Estado = true;
+                exito = productosDao.GuardarProductoConReceta(productoNuevo, listaTemporal);
+            }
 
             if (exito)
             {
-                MessageBox.Show("Producto y Receta guardados correctamente.");
-                this.Close(); 
+                MessageBox.Show("Operación realizada con éxito.");
+                this.Close();
             }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dataReceta.CurrentRow != null)
+            {
+                Receta item = (Receta)dataReceta.CurrentRow.DataBoundItem;
+
+                cmbIngredientes.SelectedValue = item.Id_Insumo1;
+                txtCantidad.Text = item.CantidadRequerida1.ToString();
+
+                listaTemporal.Remove(item);
+
+                ActualizarPantallaYPrecio();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un insumo de la tabla para editar.");
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataReceta.CurrentRow != null)
+            {
+                Receta itemAEliminar = (Receta)dataReceta.CurrentRow.DataBoundItem;
+
+                listaTemporal.Remove(itemAEliminar);
+                ActualizarPantallaYPrecio();
+                dataReceta.DataSource = null;
+                dataReceta.DataSource = listaTemporal;
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un ingrediente para quitar de la receta.");
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

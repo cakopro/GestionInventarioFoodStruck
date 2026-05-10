@@ -17,18 +17,14 @@ namespace GestionInventarioFoodStruck.Views
             InitializeComponent();
         }
 
-        private void InsumosView_Load(object sender, EventArgs e)
-        {
-            // TODO: esta línea de código carga datos en la tabla 'gestionInventarioDBDataSet2.Insumos' Puede moverla o quitarla según sea necesario.
-            this.insumosTableAdapter.Fill(this.gestionInventarioDBDataSet2.Insumos);
-
-        }
+       
 
         private void btonAgregar_Click(object sender, EventArgs e)
         {
             AgregarEditarInsumo ventana = new AgregarEditarInsumo();
             ventana.ShowDialog();
-            this.insumosTableAdapter.Fill(this.gestionInventarioDBDataSet2.Insumos);
+            this.insumosTableAdapter.Fill(this.gestionInventarioDBDataSet.Insumos);
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -54,8 +50,9 @@ namespace GestionInventarioFoodStruck.Views
                 AgregarEditarInsumo ventana = new AgregarEditarInsumo(insumoSeleccionado);
                 ventana.ShowDialog();
 
-               
-                this.insumosTableAdapter.Fill(this.gestionInventarioDBDataSet2.Insumos);
+
+                this.insumosTableAdapter.Fill(this.gestionInventarioDBDataSet.Insumos);
+
             }
             else
             {
@@ -87,7 +84,8 @@ namespace GestionInventarioFoodStruck.Views
                     if (exito)
                     {
                         MessageBox.Show("Insumo eliminado correctamente.");
-                        this.insumosTableAdapter.Fill(this.gestionInventarioDBDataSet2.Insumos);
+                        this.insumosTableAdapter.Fill(this.gestionInventarioDBDataSet.Insumos);
+
                     }
                 }
             }
@@ -96,6 +94,13 @@ namespace GestionInventarioFoodStruck.Views
               
                 MessageBox.Show("Debe seleccionar una fila para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void InsumosView_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'gestionInventarioDBDataSet.Insumos' Puede moverla o quitarla según sea necesario.
+            this.insumosTableAdapter.Fill(this.gestionInventarioDBDataSet.Insumos);
+
         }
     }
 }

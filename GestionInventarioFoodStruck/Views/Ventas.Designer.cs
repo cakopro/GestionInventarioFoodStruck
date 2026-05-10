@@ -29,465 +29,439 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbProducto = new System.Windows.Forms.ComboBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dgvDetalleVenta = new System.Windows.Forms.DataGridView();
-            this.ventasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvHistorialVentas = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblNeto = new System.Windows.Forms.Label();
-            this.lblIVA = new System.Windows.Forms.Label();
+            this.dgvDetalle = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnFinalizarCompra = new System.Windows.Forms.Button();
-            this.numCantidad = new System.Windows.Forms.NumericUpDown();
-            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.netoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iVADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ventasBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.gestionInventarioDBDataSet5 = new GestionInventarioFoodStruck.GestionInventarioDBDataSet5();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detalleVentaBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
-            this.gestionInventarioDBDataSet5BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.detalleVentaBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
+            this.lblIVA = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvVentas = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtCliente = new System.Windows.Forms.TextBox();
             this.gestionInventarioDBDataSet = new GestionInventarioFoodStruck.GestionInventarioDBDataSet();
-            this.gestionInventarioDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.detalleVentaBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.gestionInventarioDBDataSet51 = new GestionInventarioFoodStruck.GestionInventarioDBDataSet5();
-            this.detalleVentaBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.detalleVentaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.detalleVentaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ventasTableAdapter = new GestionInventarioFoodStruck.GestionInventarioDBDataSet5TableAdapters.VentasTableAdapter();
-            this.detalleVentaBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.detalleVentaTableAdapter = new GestionInventarioFoodStruck.GestionInventarioDBDataSet5TableAdapters.DetalleVentaTableAdapter();
-            this.ventasBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleVenta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ventasBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialVentas)).BeginInit();
+            this.detalleVentaTableAdapter = new GestionInventarioFoodStruck.GestionInventarioDBDataSetTableAdapters.DetalleVentaTableAdapter();
+            this.ventasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ventasTableAdapter = new GestionInventarioFoodStruck.GestionInventarioDBDataSetTableAdapters.VentasTableAdapter();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ventasBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet5BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet51)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ventasBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ventasBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(18, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 16);
+            this.label1.Size = new System.Drawing.Size(104, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Producto:";
             // 
             // cmbProducto
             // 
             this.cmbProducto.FormattingEnabled = true;
-            this.cmbProducto.Location = new System.Drawing.Point(82, 9);
+            this.cmbProducto.Location = new System.Drawing.Point(123, 9);
+            this.cmbProducto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbProducto.Name = "cmbProducto";
-            this.cmbProducto.Size = new System.Drawing.Size(187, 24);
+            this.cmbProducto.Size = new System.Drawing.Size(253, 33);
             this.cmbProducto.TabIndex = 1;
             this.cmbProducto.SelectedIndexChanged += new System.EventHandler(this.cmbProducto_SelectedIndexChanged);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(516, 9);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.ReadOnly = true;
+            this.numericUpDown1.Size = new System.Drawing.Size(104, 31);
+            this.numericUpDown1.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(302, 17);
+            this.label2.Location = new System.Drawing.Point(411, 14);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Precio:";
+            this.label2.Size = new System.Drawing.Size(104, 25);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Cantidad:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(666, 12);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 25);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Precio:";
             // 
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(357, 17);
+            this.lblPrecio.Location = new System.Drawing.Point(748, 14);
+            this.lblPrecio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(21, 16);
-            this.lblPrecio.TabIndex = 3;
-            this.lblPrecio.Text = "0$";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(517, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 16);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Cantidad:";
-            // 
-            // dgvDetalleVenta
-            // 
-            this.dgvDetalleVenta.AutoGenerateColumns = false;
-            this.dgvDetalleVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetalleVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NombreProducto,
-            this.idDataGridViewTextBoxColumn,
-            this.idVentaDataGridViewTextBoxColumn,
-            this.idProductoDataGridViewTextBoxColumn,
-            this.cantidadDataGridViewTextBoxColumn,
-            this.subtotalDataGridViewTextBoxColumn});
-            this.dgvDetalleVenta.DataSource = this.detalleVentaBindingSource6;
-            this.dgvDetalleVenta.Location = new System.Drawing.Point(3, 21);
-            this.dgvDetalleVenta.Name = "dgvDetalleVenta";
-            this.dgvDetalleVenta.RowHeadersWidth = 51;
-            this.dgvDetalleVenta.RowTemplate.Height = 24;
-            this.dgvDetalleVenta.Size = new System.Drawing.Size(853, 147);
-            this.dgvDetalleVenta.TabIndex = 6;
-            // 
-            // ventasBindingSource
-            // 
-            this.ventasBindingSource.DataMember = "Ventas";
-            this.ventasBindingSource.DataSource = this.gestionInventarioDBDataSet5BindingSource;
-            // 
-            // dgvHistorialVentas
-            // 
-            this.dgvHistorialVentas.AutoGenerateColumns = false;
-            this.dgvHistorialVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHistorialVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn1,
-            this.fechaDataGridViewTextBoxColumn,
-            this.totalDataGridViewTextBoxColumn,
-            this.netoDataGridViewTextBoxColumn,
-            this.iVADataGridViewTextBoxColumn});
-            this.dgvHistorialVentas.DataSource = this.ventasBindingSource1;
-            this.dgvHistorialVentas.Location = new System.Drawing.Point(0, 21);
-            this.dgvHistorialVentas.Name = "dgvHistorialVentas";
-            this.dgvHistorialVentas.RowHeadersWidth = 51;
-            this.dgvHistorialVentas.RowTemplate.Height = 24;
-            this.dgvHistorialVentas.Size = new System.Drawing.Size(956, 165);
-            this.dgvHistorialVentas.TabIndex = 7;
+            this.lblPrecio.Size = new System.Drawing.Size(36, 25);
+            this.lblPrecio.TabIndex = 5;
+            this.lblPrecio.Text = "$0";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgvDetalleVenta);
-            this.groupBox1.Location = new System.Drawing.Point(12, 60);
+            this.groupBox1.Controls.Add(this.dgvDetalle);
+            this.groupBox1.Controls.Add(this.btnAgregar);
+            this.groupBox1.Controls.Add(this.btnEliminar);
+            this.groupBox1.Location = new System.Drawing.Point(18, 156);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(858, 174);
-            this.groupBox1.TabIndex = 8;
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Size = new System.Drawing.Size(1010, 277);
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Detalle venta";
+            this.groupBox1.Text = "Detalle Venta";
             // 
-            // groupBox2
+            // dgvDetalle
             // 
-            this.groupBox2.Controls.Add(this.dgvHistorialVentas);
-            this.groupBox2.Location = new System.Drawing.Point(15, 304);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(956, 192);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Historial de ventas";
+            this.dgvDetalle.AllowUserToAddRows = false;
+            this.dgvDetalle.AllowUserToDeleteRows = false;
+            this.dgvDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Producto,
+            this.Cantidad,
+            this.SubTotal});
+            this.dgvDetalle.EnableHeadersVisualStyles = false;
+            this.dgvDetalle.Location = new System.Drawing.Point(0, 33);
+            this.dgvDetalle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvDetalle.Name = "dgvDetalle";
+            this.dgvDetalle.ReadOnly = true;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvDetalle.RowHeadersWidth = 51;
+            this.dgvDetalle.RowTemplate.Height = 24;
+            this.dgvDetalle.Size = new System.Drawing.Size(804, 244);
+            this.dgvDetalle.TabIndex = 0;
             // 
-            // lblNeto
+            // button1
             // 
-            this.lblNeto.AutoSize = true;
-            this.lblNeto.Location = new System.Drawing.Point(284, 257);
-            this.lblNeto.Name = "lblNeto";
-            this.lblNeto.Size = new System.Drawing.Size(56, 16);
-            this.lblNeto.TabIndex = 10;
-            this.lblNeto.Text = "Neto: $0";
+            this.button1.Location = new System.Drawing.Point(18, 475);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(213, 36);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Finalizar compra";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.White;
+            this.btnAgregar.Location = new System.Drawing.Point(826, 34);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(159, 58);
+            this.btnAgregar.TabIndex = 8;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(826, 102);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(112, 36);
+            this.btnEliminar.TabIndex = 9;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(537, 481);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(66, 25);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Total:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(313, 475);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(108, 25);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "IVA(19)%:";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(622, 486);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(36, 25);
+            this.lblTotal.TabIndex = 12;
+            this.lblTotal.Text = "$0";
             // 
             // lblIVA
             // 
             this.lblIVA.AutoSize = true;
-            this.lblIVA.Location = new System.Drawing.Point(411, 257);
+            this.lblIVA.Location = new System.Drawing.Point(441, 475);
+            this.lblIVA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIVA.Name = "lblIVA";
-            this.lblIVA.Size = new System.Drawing.Size(85, 16);
-            this.lblIVA.TabIndex = 11;
-            this.lblIVA.Text = "IVA (19%): $0";
+            this.lblIVA.Size = new System.Drawing.Size(36, 25);
+            this.lblIVA.TabIndex = 13;
+            this.lblIVA.Text = "$0";
             // 
-            // btnAgregar
+            // groupBox2
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(908, 90);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 12;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.groupBox2.Controls.Add(this.dgvVentas);
+            this.groupBox2.Location = new System.Drawing.Point(18, 591);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Size = new System.Drawing.Size(872, 306);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Historial ventas";
             // 
-            // btnEliminar
+            // dgvVentas
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(908, 148);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 14;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.dgvVentas.AllowUserToAddRows = false;
+            this.dgvVentas.AllowUserToDeleteRows = false;
+            this.dgvVentas.AutoGenerateColumns = false;
+            this.dgvVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10});
+            this.dgvVentas.DataSource = this.ventasBindingSource;
+            this.dgvVentas.EnableHeadersVisualStyles = false;
+            this.dgvVentas.Location = new System.Drawing.Point(0, 33);
+            this.dgvVentas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvVentas.Name = "dgvVentas";
+            this.dgvVentas.ReadOnly = true;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.dgvVentas.RowHeadersWidth = 51;
+            this.dgvVentas.RowTemplate.Height = 24;
+            this.dgvVentas.Size = new System.Drawing.Size(788, 273);
+            this.dgvVentas.TabIndex = 0;
             // 
-            // btnEditar
+            // label9
             // 
-            this.btnEditar.Location = new System.Drawing.Point(908, 205);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 15;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click_1);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(29, 65);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(93, 25);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Nombre:";
             // 
-            // btnFinalizarCompra
+            // txtCliente
             // 
-            this.btnFinalizarCompra.Location = new System.Drawing.Point(15, 257);
-            this.btnFinalizarCompra.Name = "btnFinalizarCompra";
-            this.btnFinalizarCompra.Size = new System.Drawing.Size(135, 23);
-            this.btnFinalizarCompra.TabIndex = 16;
-            this.btnFinalizarCompra.Text = "Finalizar compra";
-            this.btnFinalizarCompra.UseVisualStyleBackColor = true;
-            this.btnFinalizarCompra.Click += new System.EventHandler(this.btnFinalizarCompra_Click);
-            // 
-            // numCantidad
-            // 
-            this.numCantidad.Location = new System.Drawing.Point(587, 12);
-            this.numCantidad.Name = "numCantidad";
-            this.numCantidad.Size = new System.Drawing.Size(89, 22);
-            this.numCantidad.TabIndex = 17;
-            // 
-            // NombreProducto
-            // 
-            this.NombreProducto.DataPropertyName = "NombreProducto";
-            this.NombreProducto.HeaderText = "NombreProducto";
-            this.NombreProducto.MinimumWidth = 6;
-            this.NombreProducto.Name = "NombreProducto";
-            this.NombreProducto.ReadOnly = true;
-            this.NombreProducto.Width = 125;
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.Location = new System.Drawing.Point(567, 257);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(186, 16);
-            this.lblTotal.TabIndex = 0;
-            this.lblTotal.Text = "Total a Pagar: $0";
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // fechaDataGridViewTextBoxColumn
-            // 
-            this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-            this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
-            this.fechaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
-            this.fechaDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // netoDataGridViewTextBoxColumn
-            // 
-            this.netoDataGridViewTextBoxColumn.DataPropertyName = "Neto";
-            this.netoDataGridViewTextBoxColumn.HeaderText = "Neto";
-            this.netoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.netoDataGridViewTextBoxColumn.Name = "netoDataGridViewTextBoxColumn";
-            this.netoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // iVADataGridViewTextBoxColumn
-            // 
-            this.iVADataGridViewTextBoxColumn.DataPropertyName = "IVA";
-            this.iVADataGridViewTextBoxColumn.HeaderText = "IVA";
-            this.iVADataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.iVADataGridViewTextBoxColumn.Name = "iVADataGridViewTextBoxColumn";
-            this.iVADataGridViewTextBoxColumn.Width = 125;
-            // 
-            // ventasBindingSource1
-            // 
-            this.ventasBindingSource1.DataMember = "Ventas";
-            this.ventasBindingSource1.DataSource = this.gestionInventarioDBDataSet5;
-            // 
-            // gestionInventarioDBDataSet5
-            // 
-            this.gestionInventarioDBDataSet5.DataSetName = "GestionInventarioDBDataSet5";
-            this.gestionInventarioDBDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // idVentaDataGridViewTextBoxColumn
-            // 
-            this.idVentaDataGridViewTextBoxColumn.DataPropertyName = "Id_Venta";
-            this.idVentaDataGridViewTextBoxColumn.HeaderText = "Id_Venta";
-            this.idVentaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idVentaDataGridViewTextBoxColumn.Name = "idVentaDataGridViewTextBoxColumn";
-            this.idVentaDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // idProductoDataGridViewTextBoxColumn
-            // 
-            this.idProductoDataGridViewTextBoxColumn.DataPropertyName = "Id_Producto";
-            this.idProductoDataGridViewTextBoxColumn.HeaderText = "Id_Producto";
-            this.idProductoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idProductoDataGridViewTextBoxColumn.Name = "idProductoDataGridViewTextBoxColumn";
-            this.idProductoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // cantidadDataGridViewTextBoxColumn
-            // 
-            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad";
-            this.cantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad";
-            this.cantidadDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
-            this.cantidadDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // subtotalDataGridViewTextBoxColumn
-            // 
-            this.subtotalDataGridViewTextBoxColumn.DataPropertyName = "Subtotal";
-            this.subtotalDataGridViewTextBoxColumn.HeaderText = "Subtotal";
-            this.subtotalDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.subtotalDataGridViewTextBoxColumn.Name = "subtotalDataGridViewTextBoxColumn";
-            this.subtotalDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // detalleVentaBindingSource6
-            // 
-            this.detalleVentaBindingSource6.DataMember = "DetalleVenta";
-            this.detalleVentaBindingSource6.DataSource = this.gestionInventarioDBDataSet5;
-            // 
-            // gestionInventarioDBDataSet5BindingSource
-            // 
-            this.gestionInventarioDBDataSet5BindingSource.DataSource = this.gestionInventarioDBDataSet5;
-            this.gestionInventarioDBDataSet5BindingSource.Position = 0;
-            // 
-            // detalleVentaBindingSource5
-            // 
-            this.detalleVentaBindingSource5.DataMember = "DetalleVenta";
-            this.detalleVentaBindingSource5.DataSource = this.gestionInventarioDBDataSet5;
+            this.txtCliente.Location = new System.Drawing.Point(129, 65);
+            this.txtCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(252, 31);
+            this.txtCliente.TabIndex = 16;
             // 
             // gestionInventarioDBDataSet
             // 
             this.gestionInventarioDBDataSet.DataSetName = "GestionInventarioDBDataSet";
             this.gestionInventarioDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // gestionInventarioDBDataSetBindingSource
-            // 
-            this.gestionInventarioDBDataSetBindingSource.DataSource = this.gestionInventarioDBDataSet;
-            this.gestionInventarioDBDataSetBindingSource.Position = 0;
-            // 
-            // detalleVentaBindingSource4
-            // 
-            this.detalleVentaBindingSource4.DataMember = "DetalleVenta";
-            this.detalleVentaBindingSource4.DataSource = this.gestionInventarioDBDataSet51;
-            // 
-            // gestionInventarioDBDataSet51
-            // 
-            this.gestionInventarioDBDataSet51.DataSetName = "GestionInventarioDBDataSet5";
-            this.gestionInventarioDBDataSet51.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // detalleVentaBindingSource3
-            // 
-            this.detalleVentaBindingSource3.DataMember = "DetalleVenta";
-            this.detalleVentaBindingSource3.DataSource = this.gestionInventarioDBDataSet51;
-            // 
-            // detalleVentaBindingSource1
-            // 
-            this.detalleVentaBindingSource1.DataMember = "DetalleVenta";
-            this.detalleVentaBindingSource1.DataSource = this.gestionInventarioDBDataSet5;
-            // 
             // detalleVentaBindingSource
             // 
             this.detalleVentaBindingSource.DataMember = "DetalleVenta";
-            this.detalleVentaBindingSource.DataSource = this.gestionInventarioDBDataSet5;
-            // 
-            // ventasTableAdapter
-            // 
-            this.ventasTableAdapter.ClearBeforeFill = true;
-            // 
-            // detalleVentaBindingSource2
-            // 
-            this.detalleVentaBindingSource2.DataMember = "DetalleVenta";
-            this.detalleVentaBindingSource2.DataSource = this.gestionInventarioDBDataSet5;
+            this.detalleVentaBindingSource.DataSource = this.gestionInventarioDBDataSet;
             // 
             // detalleVentaTableAdapter
             // 
             this.detalleVentaTableAdapter.ClearBeforeFill = true;
             // 
-            // ventasBindingSource2
+            // ventasBindingSource
             // 
-            this.ventasBindingSource2.DataMember = "Ventas";
-            this.ventasBindingSource2.DataSource = this.gestionInventarioDBDataSet5;
+            this.ventasBindingSource.DataMember = "Ventas";
+            this.ventasBindingSource.DataSource = this.gestionInventarioDBDataSet;
+            // 
+            // ventasTableAdapter
+            // 
+            this.ventasTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "NombreCliente";
+            this.dataGridViewTextBoxColumn7.HeaderText = "NombreCliente";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Fecha";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Fecha";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "IVA";
+            this.dataGridViewTextBoxColumn9.HeaderText = "IVA";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Total";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Total";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "IdProducto";
+            this.ID.HeaderText = "IdProducto";
+            this.ID.MinimumWidth = 10;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // Producto
+            // 
+            this.Producto.DataPropertyName = "Producto";
+            this.Producto.HeaderText = "Producto";
+            this.Producto.MinimumWidth = 10;
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.DataPropertyName = "Cantidad";
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.MinimumWidth = 10;
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // SubTotal
+            // 
+            this.SubTotal.DataPropertyName = "SubTotal";
+            this.SubTotal.HeaderText = "SubTotal";
+            this.SubTotal.MinimumWidth = 10;
+            this.SubTotal.Name = "SubTotal";
+            this.SubTotal.ReadOnly = true;
             // 
             // Ventas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1075, 508);
-            this.Controls.Add(this.numCantidad);
-            this.Controls.Add(this.btnFinalizarCompra);
-            this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.lblTotal);
-            this.Controls.Add(this.lblIVA);
-            this.Controls.Add(this.lblNeto);
+            this.ClientSize = new System.Drawing.Size(1041, 936);
+            this.Controls.Add(this.txtCliente);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.lblIVA);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblPrecio);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.cmbProducto);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Ventas";
-            this.Text = "Form2";
+            this.Text = "Ventas";
             this.Load += new System.EventHandler(this.Ventas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleVenta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ventasBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ventasBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet5BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet51)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ventasBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ventasBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -497,48 +471,45 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbProducto;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblPrecio;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dgvDetalleVenta;
-        private GestionInventarioDBDataSet gestionInventarioDBDataSet;
-        private System.Windows.Forms.BindingSource gestionInventarioDBDataSetBindingSource;
-        private System.Windows.Forms.BindingSource gestionInventarioDBDataSet5BindingSource;
-        private GestionInventarioDBDataSet5 gestionInventarioDBDataSet5;
-        private System.Windows.Forms.BindingSource ventasBindingSource;
-        private GestionInventarioDBDataSet5TableAdapters.VentasTableAdapter ventasTableAdapter;
-        private System.Windows.Forms.BindingSource detalleVentaBindingSource;
-        private System.Windows.Forms.BindingSource detalleVentaBindingSource1;
-        private System.Windows.Forms.DataGridView dgvHistorialVentas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn netoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iVADataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource ventasBindingSource1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label lblNeto;
-        private System.Windows.Forms.Label lblIVA;
+        private System.Windows.Forms.DataGridView dgvDetalle;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnFinalizarCompra;
-        private System.Windows.Forms.NumericUpDown numCantidad;
-        private System.Windows.Forms.BindingSource detalleVentaBindingSource2;
-        private GestionInventarioDBDataSet5 gestionInventarioDBDataSet51;
-        private System.Windows.Forms.BindingSource detalleVentaBindingSource3;
-        private System.Windows.Forms.BindingSource detalleVentaBindingSource4;
-        private GestionInventarioDBDataSet5TableAdapters.DetalleVentaTableAdapter detalleVentaTableAdapter;
-        private System.Windows.Forms.BindingSource detalleVentaBindingSource5;
-        private System.Windows.Forms.BindingSource detalleVentaBindingSource6;
-        private System.Windows.Forms.BindingSource ventasBindingSource2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idVentaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProductoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label lblIVA;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dgvVentas;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreClienteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iVADataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
+        private GestionInventarioDBDataSet gestionInventarioDBDataSet;
+        private System.Windows.Forms.BindingSource detalleVentaBindingSource;
+        private GestionInventarioDBDataSetTableAdapters.DetalleVentaTableAdapter detalleVentaTableAdapter;
+        private System.Windows.Forms.BindingSource ventasBindingSource;
+        private GestionInventarioDBDataSetTableAdapters.VentasTableAdapter ventasTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
     }
 }

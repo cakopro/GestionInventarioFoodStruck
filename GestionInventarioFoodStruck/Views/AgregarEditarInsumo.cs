@@ -21,19 +21,19 @@ namespace GestionInventarioFoodStruck.Views
         {
             InitializeComponent();
             this.insumoLocal = insumo;
+            cmbProveedor.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbUnidadMedida.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbUnidadMedida.SelectedIndex = 1;
 
-            
+
         }
 
 
         private void AgregarEditarInsumo_Load(object sender, EventArgs e)
         {
-            this.proveedoresTableAdapter.Fill(this.gestionInventarioDBDataSet3.Proveedores);
+            // TODO: esta línea de código carga datos en la tabla 'gestionInventarioDBDataSet.Proveedores' Puede moverla o quitarla según sea necesario.
+            this.proveedoresTableAdapter.Fill(this.gestionInventarioDBDataSet.Proveedores);
 
-           
-            cmbProveedor.DisplayMember = "Nombre";
-            cmbProveedor.ValueMember = "Id";     
-                                                   
             if (this.insumoLocal != null)
             {
                 txtNombre.Text = insumoLocal.Nombre1;
@@ -42,10 +42,10 @@ namespace GestionInventarioFoodStruck.Views
                 cmbUnidadMedida.Text = insumoLocal.UnidadMedida1;
                 dtpFechaCaducidad.Value = insumoLocal.FechaCaducidad1;
 
-              
                 cmbProveedor.SelectedValue = insumoLocal.Id_Proveedor1;
             }
         }
+        
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -56,25 +56,48 @@ namespace GestionInventarioFoodStruck.Views
         {
             try
             {
-             
+               
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtStockActual.Text) || string.IsNullOrWhiteSpace(txtPrecioUnitario.Text))
                 {
                     MessageBox.Show("Por favor, completa todos los campos de texto.");
                     return;
                 }
 
-              
+             
+                if (dtpFechaCaducidad.Value.Date < DateTime.Today)
+                {
+                    MessageBox.Show("No se puede registrar un insumo que ya está vencido o vence antes de hoy.",
+                                    "Fecha de caducidad inválida",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Hand);
+                    return;
+                }
+
+          
+                int idActual = 0;
                 if (this.insumoLocal != null)
                 {
-                  
+                    idActual = this.insumoLocal.Id;
+                }
+
+                if (insumosDao.existeInsumo(txtNombre.Text, idActual))
+                {
+                    MessageBox.Show("Ya existe un insumo registrado con este nombre. Por favor, ingrese un nombre diferente.",
+                                    "Insumo Duplicado",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    return; 
+                }
+               
+                if (this.insumoLocal != null)
+                {
                     insumoLocal.Nombre1 = txtNombre.Text;
                     insumoLocal.StockActual1 = float.Parse(txtStockActual.Text);
                     insumoLocal.PrecioUnitario1 = float.Parse(txtPrecioUnitario.Text);
                     insumoLocal.UnidadMedida1 = cmbUnidadMedida.Text;
-                    insumoLocal.FechaCaducidad1 = dtpFechaCaducidad.Value; 
-                    insumoLocal.Id_Proveedor1 = Convert.ToInt32(cmbProveedor.SelectedValue); 
+                    insumoLocal.FechaCaducidad1 = dtpFechaCaducidad.Value;
+                    insumoLocal.Id_Proveedor1 = Convert.ToInt32(cmbProveedor.SelectedValue);
 
-       
                     bool respuesta = insumosDao.editarInsumo(insumoLocal);
 
                     if (respuesta) MessageBox.Show("Insumo actualizado con éxito.");
@@ -82,7 +105,6 @@ namespace GestionInventarioFoodStruck.Views
                 }
                 else
                 {
-                  
                     Insumos insumoNuevo = new Insumos();
                     insumoNuevo.Nombre1 = txtNombre.Text;
                     insumoNuevo.StockActual1 = float.Parse(txtStockActual.Text);
@@ -97,7 +119,6 @@ namespace GestionInventarioFoodStruck.Views
                     else MessageBox.Show("Error al agregar el insumo.");
                 }
 
-               
                 this.Close();
             }
             catch (Exception ex)

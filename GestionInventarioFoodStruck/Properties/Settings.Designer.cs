@@ -33,5 +33,40 @@ namespace GestionInventarioFoodStruck.Properties {
                 return ((string)(this["GestionInventarioDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\bin\\Debug\\Ges" +
+            "tionInventarioDB.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True")]
+        public string GestionInventarioDBConnectionStringBuena {
+            get {
+                return ((string)(this["GestionInventarioDBConnectionStringBuena"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\GestionInvent" +
+            "arioDB.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServer" +
+            "Certificate=True")]
+        public string GestionInventarioDBConnectionString1 {
+            get {
+                return ((string)(this["GestionInventarioDBConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Model\\Gestion" +
+            "InventarioDB.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust" +
+            "ServerCertificate=True")]
+        public string ConexionDBActual {
+            get {
+                return ((string)(this["ConexionDBActual"]));
+            }
+        }
     }
 }

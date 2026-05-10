@@ -28,265 +28,254 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.dataProductos = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productosBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.gestionInventarioDBDataSet4 = new GestionInventarioFoodStruck.GestionInventarioDBDataSet4();
-            this.productosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gestionInventarioDBDataSet = new GestionInventarioFoodStruck.GestionInventarioDBDataSet();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataIngredientes = new System.Windows.Forms.DataGridView();
-            this.recetasBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataProductos = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.productosTableAdapter = new GestionInventarioFoodStruck.GestionInventarioDBDataSetTableAdapters.ProductosTableAdapter();
-            this.gestionInventarioDBDataSet5 = new GestionInventarioFoodStruck.GestionInventarioDBDataSet5();
-            this.proveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.proveedoresTableAdapter = new GestionInventarioFoodStruck.GestionInventarioDBDataSet5TableAdapters.ProveedoresTableAdapter();
-            this.gestionInventarioDBDataSet4BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.productosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.productosTableAdapter1 = new GestionInventarioFoodStruck.GestionInventarioDBDataSet4TableAdapters.ProductosTableAdapter();
-            this.productosBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.gestionInventarioDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.productosBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.detalleVentaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.detalleVentaTableAdapter = new GestionInventarioFoodStruck.GestionInventarioDBDataSet5TableAdapters.DetalleVentaTableAdapter();
-            this.recetasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.recetasTableAdapter = new GestionInventarioFoodStruck.GestionInventarioDBDataSet5TableAdapters.RecetasTableAdapter();
-            this.recetasTableAdapter1 = new GestionInventarioFoodStruck.GestionInventarioDBDataSet4TableAdapters.RecetasTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dataProductos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet)).BeginInit();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.Id1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioVenta1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadRequerida1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnidadMedida1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataIngredientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recetasBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proveedoresBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet4BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recetasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataProductos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataProductos
-            // 
-            this.dataProductos.AllowUserToAddRows = false;
-            this.dataProductos.AllowUserToDeleteRows = false;
-            this.dataProductos.AutoGenerateColumns = false;
-            this.dataProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nombreDataGridViewTextBoxColumn,
-            this.precioVentaDataGridViewTextBoxColumn});
-            this.dataProductos.DataSource = this.productosBindingSource;
-            this.dataProductos.Location = new System.Drawing.Point(51, 152);
-            this.dataProductos.Name = "dataProductos";
-            this.dataProductos.ReadOnly = true;
-            this.dataProductos.RowHeadersWidth = 82;
-            this.dataProductos.RowTemplate.Height = 33;
-            this.dataProductos.Size = new System.Drawing.Size(636, 241);
-            this.dataProductos.TabIndex = 0;
-            this.dataProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProductos_CellContentClick);
-            this.dataProductos.SelectionChanged += new System.EventHandler(this.dataProductos_SelectionChanged);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precioVentaDataGridViewTextBoxColumn
-            // 
-            this.precioVentaDataGridViewTextBoxColumn.DataPropertyName = "PrecioVenta";
-            this.precioVentaDataGridViewTextBoxColumn.HeaderText = "PrecioVenta";
-            this.precioVentaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.precioVentaDataGridViewTextBoxColumn.Name = "precioVentaDataGridViewTextBoxColumn";
-            this.precioVentaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // productosBindingSource4
-            // 
-            this.productosBindingSource4.DataMember = "Productos";
-            this.productosBindingSource4.DataSource = this.gestionInventarioDBDataSet4;
-            // 
-            // gestionInventarioDBDataSet4
-            // 
-            this.gestionInventarioDBDataSet4.DataSetName = "GestionInventarioDBDataSet4";
-            this.gestionInventarioDBDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productosBindingSource
-            // 
-            this.productosBindingSource.DataMember = "Productos";
-            this.productosBindingSource.DataSource = this.gestionInventarioDBDataSet;
-            // 
-            // gestionInventarioDBDataSet
-            // 
-            this.gestionInventarioDBDataSet.DataSetName = "GestionInventarioDBDataSet";
-            this.gestionInventarioDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataIngredientes
             // 
             this.dataIngredientes.AllowUserToAddRows = false;
             this.dataIngredientes.AllowUserToDeleteRows = false;
             this.dataIngredientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataIngredientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataIngredientes.Location = new System.Drawing.Point(45, 439);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataIngredientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataIngredientes.ColumnHeadersHeight = 46;
+            this.dataIngredientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataIngredientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NombreInsumo,
+            this.CantidadRequerida1,
+            this.UnidadMedida1});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataIngredientes.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataIngredientes.EnableHeadersVisualStyles = false;
+            this.dataIngredientes.Location = new System.Drawing.Point(39, 470);
             this.dataIngredientes.Name = "dataIngredientes";
             this.dataIngredientes.ReadOnly = true;
+            this.dataIngredientes.RowHeadersVisible = false;
             this.dataIngredientes.RowHeadersWidth = 82;
             this.dataIngredientes.RowTemplate.Height = 33;
-            this.dataIngredientes.Size = new System.Drawing.Size(642, 241);
-            this.dataIngredientes.TabIndex = 1;
+            this.dataIngredientes.Size = new System.Drawing.Size(636, 271);
+            this.dataIngredientes.TabIndex = 0;
             // 
-            // recetasBindingSource1
+            // dataProductos
             // 
-            this.recetasBindingSource1.DataMember = "Recetas";
-            this.recetasBindingSource1.DataSource = this.gestionInventarioDBDataSet4;
+            this.dataProductos.AllowUserToAddRows = false;
+            this.dataProductos.AllowUserToDeleteRows = false;
+            this.dataProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id1,
+            this.colNombre,
+            this.PrecioVenta1});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataProductos.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataProductos.EnableHeadersVisualStyles = false;
+            this.dataProductos.Location = new System.Drawing.Point(39, 151);
+            this.dataProductos.Name = "dataProductos";
+            this.dataProductos.ReadOnly = true;
+            this.dataProductos.RowHeadersVisible = false;
+            this.dataProductos.RowHeadersWidth = 82;
+            this.dataProductos.RowTemplate.Height = 33;
+            this.dataProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataProductos.Size = new System.Drawing.Size(636, 218);
+            this.dataProductos.TabIndex = 1;
+            this.dataProductos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataProductos_CellMouseClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 123);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(30, 98);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 25);
+            this.label1.Size = new System.Drawing.Size(199, 50);
             this.label1.TabIndex = 2;
             this.label1.Text = "Productos";
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.White;
+            this.btnAgregar.Location = new System.Drawing.Point(734, 151);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(159, 58);
+            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 411);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(42, 417);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 25);
-            this.label2.TabIndex = 3;
+            this.label2.Size = new System.Drawing.Size(240, 50);
+            this.label2.TabIndex = 5;
             this.label2.Text = "Ingredientes";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // btnAgregar
+            // btnEditar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(693, 152);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(226, 44);
-            this.btnAgregar.TabIndex = 4;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnEditar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.White;
+            this.btnEditar.Location = new System.Drawing.Point(734, 237);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(159, 58);
+            this.btnEditar.TabIndex = 6;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // productosTableAdapter
+            // btnEliminar
             // 
-            this.productosTableAdapter.ClearBeforeFill = true;
+            this.btnEliminar.BackColor = System.Drawing.Color.Red;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(734, 311);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(159, 58);
+            this.btnEliminar.TabIndex = 7;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // gestionInventarioDBDataSet5
+            // checkBox1
             // 
-            this.gestionInventarioDBDataSet5.DataSetName = "GestionInventarioDBDataSet5";
-            this.gestionInventarioDBDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(297, 375);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(378, 41);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.Text = "Mostrar Productos inactivos";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // proveedoresBindingSource
+            // Id1
             // 
-            this.proveedoresBindingSource.DataMember = "Proveedores";
-            this.proveedoresBindingSource.DataSource = this.gestionInventarioDBDataSet5;
+            this.Id1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Id1.DataPropertyName = "Id1";
+            this.Id1.HeaderText = "ID";
+            this.Id1.MinimumWidth = 10;
+            this.Id1.Name = "Id1";
+            this.Id1.ReadOnly = true;
+            this.Id1.Width = 91;
             // 
-            // proveedoresTableAdapter
+            // colNombre
             // 
-            this.proveedoresTableAdapter.ClearBeforeFill = true;
+            this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNombre.DataPropertyName = "Nombre1";
+            this.colNombre.HeaderText = "Producto";
+            this.colNombre.MinimumWidth = 10;
+            this.colNombre.Name = "colNombre";
+            this.colNombre.ReadOnly = true;
             // 
-            // gestionInventarioDBDataSet4BindingSource
+            // PrecioVenta1
             // 
-            this.gestionInventarioDBDataSet4BindingSource.DataSource = this.gestionInventarioDBDataSet4;
-            this.gestionInventarioDBDataSet4BindingSource.Position = 0;
+            this.PrecioVenta1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PrecioVenta1.DataPropertyName = "PrecioVenta1";
+            this.PrecioVenta1.HeaderText = "Precio";
+            this.PrecioVenta1.MinimumWidth = 10;
+            this.PrecioVenta1.Name = "PrecioVenta1";
+            this.PrecioVenta1.ReadOnly = true;
             // 
-            // productosBindingSource1
+            // NombreInsumo
             // 
-            this.productosBindingSource1.DataMember = "Productos";
-            this.productosBindingSource1.DataSource = this.gestionInventarioDBDataSet4BindingSource;
+            this.NombreInsumo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NombreInsumo.DataPropertyName = "NombreInsumo";
+            this.NombreInsumo.HeaderText = "Ingrediente";
+            this.NombreInsumo.MinimumWidth = 10;
+            this.NombreInsumo.Name = "NombreInsumo";
+            this.NombreInsumo.ReadOnly = true;
             // 
-            // productosTableAdapter1
+            // CantidadRequerida1
             // 
-            this.productosTableAdapter1.ClearBeforeFill = true;
+            this.CantidadRequerida1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CantidadRequerida1.DataPropertyName = "CantidadRequerida1";
+            this.CantidadRequerida1.HeaderText = "Cantidad";
+            this.CantidadRequerida1.MinimumWidth = 10;
+            this.CantidadRequerida1.Name = "CantidadRequerida1";
+            this.CantidadRequerida1.ReadOnly = true;
+            this.CantidadRequerida1.Width = 178;
             // 
-            // productosBindingSource2
+            // UnidadMedida1
             // 
-            this.productosBindingSource2.DataMember = "Productos";
-            this.productosBindingSource2.DataSource = this.gestionInventarioDBDataSet4;
-            // 
-            // gestionInventarioDBDataSetBindingSource
-            // 
-            this.gestionInventarioDBDataSetBindingSource.DataSource = this.gestionInventarioDBDataSet;
-            this.gestionInventarioDBDataSetBindingSource.Position = 0;
-            // 
-            // productosBindingSource3
-            // 
-            this.productosBindingSource3.DataMember = "Productos";
-            this.productosBindingSource3.DataSource = this.gestionInventarioDBDataSet4;
-            // 
-            // detalleVentaBindingSource
-            // 
-            this.detalleVentaBindingSource.DataMember = "DetalleVenta";
-            this.detalleVentaBindingSource.DataSource = this.gestionInventarioDBDataSet5;
-            // 
-            // detalleVentaTableAdapter
-            // 
-            this.detalleVentaTableAdapter.ClearBeforeFill = true;
-            // 
-            // recetasBindingSource
-            // 
-            this.recetasBindingSource.DataMember = "Recetas";
-            this.recetasBindingSource.DataSource = this.gestionInventarioDBDataSet5;
-            // 
-            // recetasTableAdapter
-            // 
-            this.recetasTableAdapter.ClearBeforeFill = true;
-            // 
-            // recetasTableAdapter1
-            // 
-            this.recetasTableAdapter1.ClearBeforeFill = true;
+            this.UnidadMedida1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.UnidadMedida1.DataPropertyName = "UnidadMedida1";
+            this.UnidadMedida1.HeaderText = "Unidad";
+            this.UnidadMedida1.MinimumWidth = 10;
+            this.UnidadMedida1.Name = "UnidadMedida1";
+            this.UnidadMedida1.ReadOnly = true;
             // 
             // Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 723);
-            this.Controls.Add(this.btnAgregar);
+            this.ClientSize = new System.Drawing.Size(962, 769);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataIngredientes);
             this.Controls.Add(this.dataProductos);
+            this.Controls.Add(this.dataIngredientes);
             this.Name = "Productos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.Productos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataProductos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataIngredientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recetasBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proveedoresBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSet4BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gestionInventarioDBDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productosBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleVentaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recetasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,33 +283,22 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataProductos;
         private System.Windows.Forms.DataGridView dataIngredientes;
+        private System.Windows.Forms.DataGridView dataProductos;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAgregar;
-        private GestionInventarioDBDataSet gestionInventarioDBDataSet;
-        private System.Windows.Forms.BindingSource productosBindingSource;
-        private GestionInventarioDBDataSetTableAdapters.ProductosTableAdapter productosTableAdapter;
-        private GestionInventarioDBDataSet5 gestionInventarioDBDataSet5;
-        private System.Windows.Forms.BindingSource proveedoresBindingSource;
-        private GestionInventarioDBDataSet5TableAdapters.ProveedoresTableAdapter proveedoresTableAdapter;
-        private GestionInventarioDBDataSet4 gestionInventarioDBDataSet4;
-        private System.Windows.Forms.BindingSource gestionInventarioDBDataSet4BindingSource;
-        private System.Windows.Forms.BindingSource productosBindingSource1;
-        private GestionInventarioDBDataSet4TableAdapters.ProductosTableAdapter productosTableAdapter1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioVentaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource productosBindingSource2;
-        private System.Windows.Forms.BindingSource gestionInventarioDBDataSetBindingSource;
-        private System.Windows.Forms.BindingSource productosBindingSource3;
-        private System.Windows.Forms.BindingSource detalleVentaBindingSource;
-        private GestionInventarioDBDataSet5TableAdapters.DetalleVentaTableAdapter detalleVentaTableAdapter;
-        private System.Windows.Forms.BindingSource recetasBindingSource;
-        private GestionInventarioDBDataSet5TableAdapters.RecetasTableAdapter recetasTableAdapter;
-        private System.Windows.Forms.BindingSource productosBindingSource4;
-        private System.Windows.Forms.BindingSource recetasBindingSource1;
-        private GestionInventarioDBDataSet4TableAdapters.RecetasTableAdapter recetasTableAdapter1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreInsumo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadRequerida1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta1;
     }
 }

@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -49,7 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -74,35 +74,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GestionInventarioDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="GestionInventarioDBDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GestionInventarioDBDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="GestionInventarioDBDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GestionInventarioDBDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="GestionInventarioDBDataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GestionInventarioDBDataSet3.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="GestionInventarioDBDataSet4.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GestionInventarioDBDataSet4.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="GestionInventarioDBDataSet5.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GestionInventarioDBDataSet5.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="Model\DetalleVenta.cs" />
     <Compile Include="Model\Insumos.cs" />
     <Compile Include="Model\ProductosClase.cs" />
     <Compile Include="Model\Proveedores.cs" />
     <Compile Include="Model\Receta.cs" />
+    <Compile Include="Model\Venta.cs" />
     <Compile Include="Views\AgregarEditarInsumo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,20 +98,14 @@
     <Compile Include="Views\AgregarProducto.Designer.cs">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Form1.cs">
+    <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Views\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\EditarVentas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\EditarVentas.Designer.cs">
-      <DependentUpon>EditarVentas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Ventas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,8 +145,8 @@
     <EmbeddedResource Include="Views\AgregarProducto.resx">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -187,9 +158,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\EditarVentas.resx">
-      <DependentUpon>EditarVentas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\InsumosView.resx">
       <DependentUpon>InsumosView.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,61 +183,6 @@
     </None>
     <None Include="GestionInventarioDBDataSet.xss">
       <DependentUpon>GestionInventarioDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="GestionInventarioDBDataSet1.xsc">
-      <DependentUpon>GestionInventarioDBDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="GestionInventarioDBDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GestionInventarioDBDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GestionInventarioDBDataSet1.xss">
-      <DependentUpon>GestionInventarioDBDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="GestionInventarioDBDataSet2.xsc">
-      <DependentUpon>GestionInventarioDBDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="GestionInventarioDBDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GestionInventarioDBDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GestionInventarioDBDataSet2.xss">
-      <DependentUpon>GestionInventarioDBDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="GestionInventarioDBDataSet3.xsc">
-      <DependentUpon>GestionInventarioDBDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="GestionInventarioDBDataSet3.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GestionInventarioDBDataSet3.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GestionInventarioDBDataSet3.xss">
-      <DependentUpon>GestionInventarioDBDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="GestionInventarioDBDataSet4.xsc">
-      <DependentUpon>GestionInventarioDBDataSet4.xsd</DependentUpon>
-    </None>
-    <None Include="GestionInventarioDBDataSet4.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GestionInventarioDBDataSet4.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GestionInventarioDBDataSet4.xss">
-      <DependentUpon>GestionInventarioDBDataSet4.xsd</DependentUpon>
-    </None>
-    <None Include="GestionInventarioDBDataSet5.xsc">
-      <DependentUpon>GestionInventarioDBDataSet5.xsd</DependentUpon>
-    </None>
-    <None Include="GestionInventarioDBDataSet5.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GestionInventarioDBDataSet5.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GestionInventarioDBDataSet5.xss">
-      <DependentUpon>GestionInventarioDBDataSet5.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -297,13 +210,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GestionInventarioDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GestionInventarioDB_log.ldf">
-      <DependentUpon>GestionInventarioDB.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="imagen\camion.png" />
     <Content Include="imagen\insumo.png" />
     <Content Include="imagen\login.png">
@@ -312,6 +218,13 @@
     <Content Include="imagen\producto.png" />
     <Content Include="imagen\venta.png" />
     <Content Include="imagen\volver.png" />
+    <Content Include="Model\GestionInventarioDB.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Model\GestionInventarioDB_log.ldf">
+      <DependentUpon>GestionInventarioDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
