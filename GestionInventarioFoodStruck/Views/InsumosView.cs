@@ -100,7 +100,22 @@ namespace GestionInventarioFoodStruck.Views
         {
             // TODO: esta línea de código carga datos en la tabla 'gestionInventarioDBDataSet.Insumos' Puede moverla o quitarla según sea necesario.
             this.insumosTableAdapter.Fill(this.gestionInventarioDBDataSet.Insumos);
+            insumosBindingSource.Filter = "Estado = 1";
 
+        }
+
+        private void chkVerInactivos_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            if (chkVerInactivos.Checked)
+            {
+                insumosBindingSource.Filter = "Estado = 0";
+            }
+            
+            else
+            {
+                insumosBindingSource.Filter = "Estado = 1";
+            }
         }
     }
 }

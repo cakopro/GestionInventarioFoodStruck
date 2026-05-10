@@ -15,6 +15,7 @@ namespace GestionInventarioFoodStruck.Model
         private float PrecioUnitario;
         private DateTime FechaCaducidad;
         private int Id_Proveedor;
+        private bool estado; 
 
         public int Id { get => id; set => id = value; }
         public string Nombre1 { get => Nombre; set => Nombre = value; }
@@ -23,8 +24,9 @@ namespace GestionInventarioFoodStruck.Model
         public float PrecioUnitario1 { get => PrecioUnitario; set => PrecioUnitario = value; }
         public DateTime FechaCaducidad1 { get => FechaCaducidad; set => FechaCaducidad = value; }
         public int Id_Proveedor1 { get => Id_Proveedor; set => Id_Proveedor = value; }
+        public bool Estado { get => estado; set => estado = value; }
 
-        public Insumos(int id, string nombre, float stockActual, string unidadMedida, float precioUnitario, DateTime fechaCaducidad, int id_Proveedor)
+        public Insumos(int id, string nombre, float stockActual, string unidadMedida, float precioUnitario, DateTime fechaCaducidad, int id_Proveedor, bool estado)
         {
             this.Id = id;
             Nombre1 = nombre;
@@ -33,8 +35,8 @@ namespace GestionInventarioFoodStruck.Model
             PrecioUnitario1 = precioUnitario;
             FechaCaducidad1 = fechaCaducidad;
             Id_Proveedor1 = id_Proveedor;
+            this.Estado = estado;
         }
         public Insumos() { }
-
     }
 }

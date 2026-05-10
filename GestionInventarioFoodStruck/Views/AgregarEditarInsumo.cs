@@ -31,9 +31,20 @@ namespace GestionInventarioFoodStruck.Views
 
         private void AgregarEditarInsumo_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'gestionInventarioDBDataSet.Proveedores' Puede moverla o quitarla según sea necesario.
+            
             this.proveedoresTableAdapter.Fill(this.gestionInventarioDBDataSet.Proveedores);
 
+            DataView proveedoresActivos = new DataView(this.gestionInventarioDBDataSet.Proveedores);
+
+            
+            proveedoresActivos.RowFilter = "estado = 1";
+
+            cmbProveedor.DataSource = proveedoresActivos;
+            cmbProveedor.DisplayMember = "Nombre";
+            cmbProveedor.ValueMember = "Id";
+          
+
+            
             if (this.insumoLocal != null)
             {
                 txtNombre.Text = insumoLocal.Nombre1;
@@ -45,7 +56,7 @@ namespace GestionInventarioFoodStruck.Views
                 cmbProveedor.SelectedValue = insumoLocal.Id_Proveedor1;
             }
         }
-        
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -56,14 +67,23 @@ namespace GestionInventarioFoodStruck.Views
         {
             try
             {
-               
+                
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtStockActual.Text) || string.IsNullOrWhiteSpace(txtPrecioUnitario.Text))
                 {
                     MessageBox.Show("Por favor, completa todos los campos de texto.");
                     return;
                 }
 
-             
+               
+                if (cmbProveedor.SelectedValue == null)
+                {
+                    MessageBox.Show("No se puede crear un insumo sin su proveedor. Por favor, asegúrese de tener proveedores activos registrados.",
+                                    "Proveedor requerido",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    return; 
+                }
+         
                 if (dtpFechaCaducidad.Value.Date < DateTime.Today)
                 {
                     MessageBox.Show("No se puede registrar un insumo que ya está vencido o vence antes de hoy.",
@@ -73,7 +93,6 @@ namespace GestionInventarioFoodStruck.Views
                     return;
                 }
 
-          
                 int idActual = 0;
                 if (this.insumoLocal != null)
                 {
@@ -86,9 +105,9 @@ namespace GestionInventarioFoodStruck.Views
                                     "Insumo Duplicado",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Warning);
-                    return; 
+                    return;
                 }
-               
+
                 if (this.insumoLocal != null)
                 {
                     insumoLocal.Nombre1 = txtNombre.Text;

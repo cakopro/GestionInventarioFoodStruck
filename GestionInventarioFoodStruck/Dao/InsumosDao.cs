@@ -34,6 +34,7 @@ namespace GestionInventarioFoodStruck.Dao
                     insumo.PrecioUnitario1 = float.Parse(reader["PrecioUnitario"].ToString());
                     insumo.FechaCaducidad1 = DateTime.Parse(reader["FechaCaducidad"].ToString());
                     insumo.Id_Proveedor1 = int.Parse(reader["Id_Proveedor"].ToString());
+                    insumo.Estado = Convert.ToBoolean(reader["Estado"]);
 
                     lista.Add(insumo);
                 }
@@ -113,20 +114,18 @@ namespace GestionInventarioFoodStruck.Dao
             try
             {
                
-                string query = "DELETE FROM Insumos WHERE Id = @Id";
+                string query = "UPDATE Insumos SET Estado = 0 WHERE Id = @Id";
 
                 SqlCommand comando = new SqlCommand(query, conectarse);
                 comando.Parameters.AddWithValue("@Id", id);
 
                 conectarse.Open();
-
-                
                 int filasAfectadas = comando.ExecuteNonQuery();
                 return filasAfectadas > 0;
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Error al eliminar de la base de datos: {e.Message}");
+                MessageBox.Show($"Error al desactivar en la base de datos: {e.Message}");
                 return false;
             }
             finally { conectarse.Close(); }
@@ -152,7 +151,7 @@ namespace GestionInventarioFoodStruck.Dao
 
                 int cantidad = Convert.ToInt32(comando.ExecuteScalar());
 
-
+               
                 return cantidad > 0;
             }
             catch (Exception e)

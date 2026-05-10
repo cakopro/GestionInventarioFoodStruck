@@ -57,21 +57,28 @@ namespace GestionInventarioFoodStruck.Views
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dataProveedores.CurrentRow != null) {
+            if (dataProveedores.CurrentRow != null)
+            {
+               
                 DialogResult result = MessageBox.Show("¿Seguro que desea desactivar este proveedor?", "Confirmar", MessageBoxButtons.YesNo);
-                DataRowView fila = (DataRowView)dataProveedores.CurrentRow.DataBoundItem;
-                int id = Convert.ToInt32(fila["Id"]);
-                ProveedoresDao provedor = new ProveedoresDao();
-                ProveedoresDao dao = new ProveedoresDao();
-                if (dao.eliminarProveedor(id))
-                {
-                    this.proveedoresTableAdapter.Fill(this.gestionInventarioDBDataSet.Proveedores);
-                }
 
+                if (result == DialogResult.Yes)
+                {
+                    DataRowView fila = (DataRowView)dataProveedores.CurrentRow.DataBoundItem;
+                    int id = Convert.ToInt32(fila["Id"]);
+
+                   
+                    ProveedoresDao dao = new ProveedoresDao();
+
+                    if (dao.eliminarProveedor(id))
+                    {
+                        this.proveedoresTableAdapter.Fill(this.gestionInventarioDBDataSet.Proveedores);
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("Dese seleccionar una fila para eliminar.", "Seleccione", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar una fila para eliminar.", "Seleccione", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

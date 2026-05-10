@@ -73,6 +73,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GestionInventarioDBDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Model\DetalleVenta.cs" />
     <Compile Include="Model\Insumos.cs" />
@@ -175,14 +176,17 @@
     </EmbeddedResource>
     <None Include="GestionInventarioDBDataSet.xsc">
       <DependentUpon>GestionInventarioDBDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="GestionInventarioDBDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>GestionInventarioDBDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="GestionInventarioDBDataSet.xss">
       <DependentUpon>GestionInventarioDBDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

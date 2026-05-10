@@ -891,6 +891,8 @@ namespace GestionInventarioFoodStruck {
             
             private global::System.Data.DataColumn columnId_Proveedor;
             
+            private global::System.Data.DataColumn columnEstado;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public InsumosDataTable() {
@@ -982,6 +984,14 @@ namespace GestionInventarioFoodStruck {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public global::System.Data.DataColumn EstadoColumn {
+                get {
+                    return this.columnEstado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1017,7 +1027,7 @@ namespace GestionInventarioFoodStruck {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public InsumosRow AddInsumosRow(string Nombre, double StockActual, string UnidadMedida, double PrecioUnitario, System.DateTime FechaCaducidad, ProveedoresRow parentProveedoresRowByFK__Insumos__Id_Prov__5FB337D6) {
+            public InsumosRow AddInsumosRow(string Nombre, double StockActual, string UnidadMedida, double PrecioUnitario, System.DateTime FechaCaducidad, ProveedoresRow parentProveedoresRowByFK__Insumos__Id_Prov__5FB337D6, bool Estado) {
                 InsumosRow rowInsumosRow = ((InsumosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1026,7 +1036,8 @@ namespace GestionInventarioFoodStruck {
                         UnidadMedida,
                         PrecioUnitario,
                         FechaCaducidad,
-                        null};
+                        null,
+                        Estado};
                 if ((parentProveedoresRowByFK__Insumos__Id_Prov__5FB337D6 != null)) {
                     columnValuesArray[6] = parentProveedoresRowByFK__Insumos__Id_Prov__5FB337D6[0];
                 }
@@ -1066,6 +1077,7 @@ namespace GestionInventarioFoodStruck {
                 this.columnPrecioUnitario = base.Columns["PrecioUnitario"];
                 this.columnFechaCaducidad = base.Columns["FechaCaducidad"];
                 this.columnId_Proveedor = base.Columns["Id_Proveedor"];
+                this.columnEstado = base.Columns["Estado"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1085,6 +1097,8 @@ namespace GestionInventarioFoodStruck {
                 base.Columns.Add(this.columnFechaCaducidad);
                 this.columnId_Proveedor = new global::System.Data.DataColumn("Id_Proveedor", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId_Proveedor);
+                this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEstado);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1100,6 +1114,7 @@ namespace GestionInventarioFoodStruck {
                 this.columnUnidadMedida.MaxLength = 50;
                 this.columnPrecioUnitario.AllowDBNull = false;
                 this.columnId_Proveedor.AllowDBNull = false;
+                this.columnEstado.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3133,6 +3148,17 @@ namespace GestionInventarioFoodStruck {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public bool Estado {
+                get {
+                    return ((bool)(this[this.tableInsumos.EstadoColumn]));
+                }
+                set {
+                    this[this.tableInsumos.EstadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public ProveedoresRow ProveedoresRow {
                 get {
                     return ((ProveedoresRow)(this.GetParentRow(this.Table.ParentRelations["FK__Insumos__Id_Prov__5FB337D6"])));
@@ -4488,10 +4514,11 @@ SELECT Id, Nombre, Telefono, Correo, Empresa, Direccion, estado FROM Proveedores
             tableMapping.ColumnMappings.Add("PrecioUnitario", "PrecioUnitario");
             tableMapping.ColumnMappings.Add("FechaCaducidad", "FechaCaducidad");
             tableMapping.ColumnMappings.Add("Id_Proveedor", "Id_Proveedor");
+            tableMapping.ColumnMappings.Add("Estado", "Estado");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Insumos] WHERE (([Id] = @Original_Id) AND ([Nombre] = @Original_Nombre) AND ([StockActual] = @Original_StockActual) AND ([UnidadMedida] = @Original_UnidadMedida) AND ([PrecioUnitario] = @Original_PrecioUnitario) AND ((@IsNull_FechaCaducidad = 1 AND [FechaCaducidad] IS NULL) OR ([FechaCaducidad] = @Original_FechaCaducidad)) AND ([Id_Proveedor] = @Original_Id_Proveedor))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Insumos] WHERE (([Id] = @Original_Id) AND ([Nombre] = @Original_Nombre) AND ([StockActual] = @Original_StockActual) AND ([UnidadMedida] = @Original_UnidadMedida) AND ([PrecioUnitario] = @Original_PrecioUnitario) AND ((@IsNull_FechaCaducidad = 1 AND [FechaCaducidad] IS NULL) OR ([FechaCaducidad] = @Original_FechaCaducidad)) AND ([Id_Proveedor] = @Original_Id_Proveedor) AND ([Estado] = @Original_Estado))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4501,10 +4528,11 @@ SELECT Id, Nombre, Telefono, Correo, Empresa, Direccion, estado FROM Proveedores
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FechaCaducidad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaCaducidad", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FechaCaducidad", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaCaducidad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id_Proveedor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Proveedor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Insumos] ([Nombre], [StockActual], [UnidadMedida], [PrecioUnitario], [FechaCaducidad], [Id_Proveedor]) VALUES (@Nombre, @StockActual, @UnidadMedida, @PrecioUnitario, @FechaCaducidad, @Id_Proveedor);
-SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id_Proveedor FROM Insumos WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Insumos] ([Nombre], [StockActual], [UnidadMedida], [PrecioUnitario], [FechaCaducidad], [Id_Proveedor], [Estado]) VALUES (@Nombre, @StockActual, @UnidadMedida, @PrecioUnitario, @FechaCaducidad, @Id_Proveedor, @Estado);
+SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id_Proveedor, Estado FROM Insumos WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StockActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StockActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4512,10 +4540,11 @@ SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PrecioUnitario", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PrecioUnitario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaCaducidad", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaCaducidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id_Proveedor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Proveedor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Insumos] SET [Nombre] = @Nombre, [StockActual] = @StockActual, [UnidadMedida] = @UnidadMedida, [PrecioUnitario] = @PrecioUnitario, [FechaCaducidad] = @FechaCaducidad, [Id_Proveedor] = @Id_Proveedor WHERE (([Id] = @Original_Id) AND ([Nombre] = @Original_Nombre) AND ([StockActual] = @Original_StockActual) AND ([UnidadMedida] = @Original_UnidadMedida) AND ([PrecioUnitario] = @Original_PrecioUnitario) AND ((@IsNull_FechaCaducidad = 1 AND [FechaCaducidad] IS NULL) OR ([FechaCaducidad] = @Original_FechaCaducidad)) AND ([Id_Proveedor] = @Original_Id_Proveedor));
-SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id_Proveedor FROM Insumos WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Insumos] SET [Nombre] = @Nombre, [StockActual] = @StockActual, [UnidadMedida] = @UnidadMedida, [PrecioUnitario] = @PrecioUnitario, [FechaCaducidad] = @FechaCaducidad, [Id_Proveedor] = @Id_Proveedor, [Estado] = @Estado WHERE (([Id] = @Original_Id) AND ([Nombre] = @Original_Nombre) AND ([StockActual] = @Original_StockActual) AND ([UnidadMedida] = @Original_UnidadMedida) AND ([PrecioUnitario] = @Original_PrecioUnitario) AND ((@IsNull_FechaCaducidad = 1 AND [FechaCaducidad] IS NULL) OR ([FechaCaducidad] = @Original_FechaCaducidad)) AND ([Id_Proveedor] = @Original_Id_Proveedor) AND ([Estado] = @Original_Estado));
+SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id_Proveedor, Estado FROM Insumos WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StockActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StockActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4523,6 +4552,7 @@ SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PrecioUnitario", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PrecioUnitario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaCaducidad", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaCaducidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id_Proveedor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Proveedor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StockActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StockActual", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4531,6 +4561,7 @@ SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FechaCaducidad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaCaducidad", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FechaCaducidad", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaCaducidad", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id_Proveedor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Proveedor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -4548,7 +4579,7 @@ SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id_" +
-                "Proveedor FROM dbo.Insumos";
+                "Proveedor,Estado FROM dbo.Insumos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4609,7 +4640,7 @@ SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_Nombre, double Original_StockActual, string Original_UnidadMedida, double Original_PrecioUnitario, global::System.Nullable<global::System.DateTime> Original_FechaCaducidad, int Original_Id_Proveedor) {
+        public virtual int Delete(int Original_Id, string Original_Nombre, double Original_StockActual, string Original_UnidadMedida, double Original_PrecioUnitario, global::System.Nullable<global::System.DateTime> Original_FechaCaducidad, int Original_Id_Proveedor, bool Original_Estado) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_Nombre == null)) {
                 throw new global::System.ArgumentNullException("Original_Nombre");
@@ -4634,6 +4665,7 @@ SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_Id_Proveedor));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((bool)(Original_Estado));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4654,7 +4686,7 @@ SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Nombre, double StockActual, string UnidadMedida, double PrecioUnitario, global::System.Nullable<global::System.DateTime> FechaCaducidad, int Id_Proveedor) {
+        public virtual int Insert(string Nombre, double StockActual, string UnidadMedida, double PrecioUnitario, global::System.Nullable<global::System.DateTime> FechaCaducidad, int Id_Proveedor, bool Estado) {
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
             }
@@ -4676,6 +4708,7 @@ SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Id_Proveedor));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((bool)(Estado));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4696,7 +4729,23 @@ SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nombre, double StockActual, string UnidadMedida, double PrecioUnitario, global::System.Nullable<global::System.DateTime> FechaCaducidad, int Id_Proveedor, int Original_Id, string Original_Nombre, double Original_StockActual, string Original_UnidadMedida, double Original_PrecioUnitario, global::System.Nullable<global::System.DateTime> Original_FechaCaducidad, int Original_Id_Proveedor, int Id) {
+        public virtual int Update(
+                    string Nombre, 
+                    double StockActual, 
+                    string UnidadMedida, 
+                    double PrecioUnitario, 
+                    global::System.Nullable<global::System.DateTime> FechaCaducidad, 
+                    int Id_Proveedor, 
+                    bool Estado, 
+                    int Original_Id, 
+                    string Original_Nombre, 
+                    double Original_StockActual, 
+                    string Original_UnidadMedida, 
+                    double Original_PrecioUnitario, 
+                    global::System.Nullable<global::System.DateTime> Original_FechaCaducidad, 
+                    int Original_Id_Proveedor, 
+                    bool Original_Estado, 
+                    int Id) {
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
             }
@@ -4718,31 +4767,33 @@ SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Id_Proveedor));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(Estado));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Id));
             if ((Original_Nombre == null)) {
                 throw new global::System.ArgumentNullException("Original_Nombre");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Nombre));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Nombre));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((double)(Original_StockActual));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(Original_StockActual));
             if ((Original_UnidadMedida == null)) {
                 throw new global::System.ArgumentNullException("Original_UnidadMedida");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_UnidadMedida));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_UnidadMedida));
             }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(Original_PrecioUnitario));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(Original_PrecioUnitario));
             if ((Original_FechaCaducidad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_FechaCaducidad.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_FechaCaducidad.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_Id_Proveedor));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_Id_Proveedor));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(Original_Estado));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4763,8 +4814,8 @@ SELECT Id, Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nombre, double StockActual, string UnidadMedida, double PrecioUnitario, global::System.Nullable<global::System.DateTime> FechaCaducidad, int Id_Proveedor, int Original_Id, string Original_Nombre, double Original_StockActual, string Original_UnidadMedida, double Original_PrecioUnitario, global::System.Nullable<global::System.DateTime> Original_FechaCaducidad, int Original_Id_Proveedor) {
-            return this.Update(Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id_Proveedor, Original_Id, Original_Nombre, Original_StockActual, Original_UnidadMedida, Original_PrecioUnitario, Original_FechaCaducidad, Original_Id_Proveedor, Original_Id);
+        public virtual int Update(string Nombre, double StockActual, string UnidadMedida, double PrecioUnitario, global::System.Nullable<global::System.DateTime> FechaCaducidad, int Id_Proveedor, bool Estado, int Original_Id, string Original_Nombre, double Original_StockActual, string Original_UnidadMedida, double Original_PrecioUnitario, global::System.Nullable<global::System.DateTime> Original_FechaCaducidad, int Original_Id_Proveedor, bool Original_Estado) {
+            return this.Update(Nombre, StockActual, UnidadMedida, PrecioUnitario, FechaCaducidad, Id_Proveedor, Estado, Original_Id, Original_Nombre, Original_StockActual, Original_UnidadMedida, Original_PrecioUnitario, Original_FechaCaducidad, Original_Id_Proveedor, Original_Estado, Original_Id);
         }
     }
     

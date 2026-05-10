@@ -67,7 +67,8 @@ namespace GestionInventarioFoodStruck.Views
         }
         void cargarCatalogo()
         {
-            var listaInsumos = insumos.traerTodo();
+            var listaInsumos = insumos.traerTodo().Where(i => i.Estado == true).ToList();
+
             cmbIngredientes.DataSource = listaInsumos;
             cmbIngredientes.DisplayMember = "Nombre1";
             cmbIngredientes.ValueMember = "Id";
