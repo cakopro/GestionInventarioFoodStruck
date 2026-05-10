@@ -91,31 +91,42 @@ namespace GestionInventarioFoodStruck.Views
             }
 
             ProductosClase producto = (ProductosClase)cmbProducto.SelectedItem;
+            int cantidadNuevaAñadir = (int)numericUpDown1.Value;
 
-            bool stockDisponible =
-            productosDao.HayStockSuficiente(
-            producto.Id1,
-            (int)numericUpDown1.Value);
+          
+            int cantidadYaEnCarrito = 0;
+            foreach (var item in detallesVenta)
+            {
+                if (item.IdProducto == producto.Id1)
+                {
+                    cantidadYaEnCarrito += item.Cantidad;
+                }
+            }
 
+           
+            int totalAValidar = cantidadYaEnCarrito + cantidadNuevaAñadir;
+
+          
+            bool stockDisponible = productosDao.HayStockSuficiente(producto.Id1, totalAValidar);
+
+           
             if (!stockDisponible)
             {
                 return;
             }
 
+         
             DetalleVenta detalle = new DetalleVenta()
             {
                 IdProducto = producto.Id1,
                 Producto = producto.Nombre1,
                 Precio = producto.PrecioVenta1,
-                Cantidad = (int)numericUpDown1.Value
+                Cantidad = cantidadNuevaAñadir
             };
 
             detallesVenta.Add(detalle);
-
             ActualizarDetalle();
-
             CalcularTotal();
-
             numericUpDown1.Value = 1;
         }
         void CargarVentas()
