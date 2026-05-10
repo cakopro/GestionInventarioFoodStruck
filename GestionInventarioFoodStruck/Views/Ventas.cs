@@ -92,6 +92,16 @@ namespace GestionInventarioFoodStruck.Views
 
             ProductosClase producto = (ProductosClase)cmbProducto.SelectedItem;
 
+            bool stockDisponible =
+            productosDao.HayStockSuficiente(
+            producto.Id1,
+            (int)numericUpDown1.Value);
+
+            if (!stockDisponible)
+            {
+                return;
+            }
+
             DetalleVenta detalle = new DetalleVenta()
             {
                 IdProducto = producto.Id1,
@@ -143,10 +153,19 @@ namespace GestionInventarioFoodStruck.Views
 
             if (respuesta)
             {
+                foreach (DetalleVenta item in detallesVenta)
+                {
+                    productosDao.DescontarInsumos(
+                        item.IdProducto,
+                        item.Cantidad);
+                }
+
                 MessageBox.Show("Venta guardada correctamente");
+
                 CargarVentas();
 
                 this.ventasTableAdapter.Fill(this.gestionInventarioDBDataSet.Ventas);
+
                 this.detalleVentaTableAdapter.Fill(this.gestionInventarioDBDataSet.DetalleVenta);
 
                 detallesVenta.Clear();

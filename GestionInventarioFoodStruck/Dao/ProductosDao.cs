@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace GestionInventarioFoodStruck.Dao
 {
     public class ProductosDao
@@ -223,6 +224,105 @@ namespace GestionInventarioFoodStruck.Dao
             }
 
             return lista;
+        }
+        public bool HayStockSuficiente(int idProducto, int cantidadVendida)
+        {
+            Conexion instancia = Conexion.getInstance();
+
+            SqlConnection conexion = instancia.Conectarse();
+
+            try
+            {
+                conexion.Open();
+
+                string query = @"
+        SELECT 
+            I.Nombre,
+            I.StockActual,
+            R.CantidadRequerida
+        FROM Recetas R
+        INNER JOIN Insumos I
+        ON R.Id_Insumo = I.Id
+        WHERE R.Id_Producto = @IdProducto";
+
+                SqlCommand cmd = new SqlCommand(query, conexion);
+
+                cmd.Parameters.AddWithValue("@IdProducto", idProducto);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    float stockActual =
+                    float.Parse(reader["StockActual"].ToString());
+
+                    float cantidadRequerida =
+                    float.Parse(reader["CantidadRequerida"].ToString());
+
+                    string nombreInsumo =
+                    reader["Nombre"].ToString();
+
+                    float necesario =
+                    cantidadRequerida * cantidadVendida;
+
+                    if (stockActual < necesario)
+                    {
+                        MessageBox.Show(
+                            "No hay suficiente stock de: " +
+                            nombreInsumo);
+
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+        public void DescontarInsumos(int idProducto, int cantidadVendida)
+        {
+            Conexion instancia = Conexion.getInstance();
+
+            SqlConnection conexion = instancia.Conectarse();
+
+            try
+            {
+                conexion.Open();
+
+                string query = @"
+        UPDATE Insumos
+        SET StockActual = StockActual - 
+        (Recetas.CantidadRequerida * @CantidadVendida)
+        FROM Recetas
+        INNER JOIN Insumos
+        ON Recetas.Id_Insumo = Insumos.Id
+        WHERE Recetas.Id_Producto = @IdProducto";
+
+                SqlCommand cmd = new SqlCommand(query, conexion);
+
+                cmd.Parameters.AddWithValue("@IdProducto", idProducto);
+
+                cmd.Parameters.AddWithValue("@CantidadVendida", cantidadVendida);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
     }
 }
