@@ -25,7 +25,7 @@ namespace GestionInventarioFoodStruck.Views
         {
             InitializeComponent();
             CargarProductos();
-            dgvDetalle.AutoGenerateColumns = false;
+            dgvDetalle.AutoGenerateColumns = true;
         }
         void CargarProductos()
         {
@@ -40,8 +40,12 @@ namespace GestionInventarioFoodStruck.Views
         void ActualizarDetalle()
         {
             dgvDetalle.DataSource = null;
+
             dgvDetalle.DataSource = detallesVenta;
 
+            dgvDetalle.Columns["Precio"].DefaultCellStyle.Format = "C0";
+
+            dgvDetalle.Columns["Subtotal"].DefaultCellStyle.Format = "C0";
         }
         void CalcularTotal()
         {
@@ -55,15 +59,21 @@ namespace GestionInventarioFoodStruck.Views
 
             lblTotal.Text = "TOTAL: $" + total.ToString("N0");
         }
-
-        private void cmbProducto_SelectedIndexChanged(object sender, EventArgs e)
+        void ActualizarPrecio()
         {
             if (cmbProducto.SelectedItem != null)
             {
                 ProductosClase producto = (ProductosClase)cmbProducto.SelectedItem;
 
-                lblPrecio.Text = "$" + producto.PrecioVenta1.ToString("N0");
+                float total = producto.PrecioVenta1 * (float)numericUpDown1.Value;
+
+                lblPrecio.Text = "$" + total.ToString("N0");
             }
+        }
+
+        private void cmbProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarPrecio();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -159,14 +169,13 @@ namespace GestionInventarioFoodStruck.Views
         {
             if (dgvDetalle.CurrentRow != null)
             {
-                DetalleVenta itemSeleccionado = (DetalleVenta)dgvDetalle.CurrentRow.DataBoundItem;
+                int index = dgvDetalle.CurrentRow.Index;
 
-                if (itemSeleccionado != null)
-                {
-                    detallesVenta.Remove(itemSeleccionado);
-                    ActualizarDetalle();
-                    CalcularTotal();
-                }
+                detallesVenta.RemoveAt(index);
+
+                ActualizarDetalle();
+
+                CalcularTotal();
             }
             else
             {
@@ -179,6 +188,12 @@ namespace GestionInventarioFoodStruck.Views
             try
             {
                 this.ventasTableAdapter.Fill(this.gestionInventarioDBDataSet.Ventas);
+
+                dgvVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                dgvVentas.Columns[3].DefaultCellStyle.Format = "C0";
+
+                dgvVentas.Columns[4].DefaultCellStyle.Format = "C0";
             }
             catch (Exception ex)
             {
@@ -186,6 +201,11 @@ namespace GestionInventarioFoodStruck.Views
             }
 
 
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            ActualizarPrecio();
         }
     }
 }
