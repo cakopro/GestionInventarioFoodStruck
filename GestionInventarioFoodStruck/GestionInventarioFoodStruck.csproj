@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\UsuarioDao.cs" />
     <Compile Include="Dao\VentasDAO.cs" />
     <Compile Include="Dao\Conexion.cs" />
     <Compile Include="Dao\InsumosDao.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Model\ProductosClase.cs" />
     <Compile Include="Model\Proveedores.cs" />
     <Compile Include="Model\Receta.cs" />
+    <Compile Include="Model\Usuario.cs" />
     <Compile Include="Model\Venta.cs" />
     <Compile Include="Views\AgregarEditarInsumo.cs">
       <SubType>Form</SubType>

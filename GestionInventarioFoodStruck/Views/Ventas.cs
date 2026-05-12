@@ -25,6 +25,8 @@ namespace GestionInventarioFoodStruck.Views
         {
             InitializeComponent();
             CargarProductos();
+            cmbProducto.DropDownStyle = ComboBoxStyle.DropDownList;
+
             dgvDetalle.AutoGenerateColumns = true;
         }
         void CargarProductos()

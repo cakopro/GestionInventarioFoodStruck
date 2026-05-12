@@ -23,6 +23,7 @@ namespace GestionInventarioFoodStruck.Views
             InitializeComponent();
             this.productoExistente = prod;
             this.listaTemporal = receta ?? new List<Receta>();
+            cmbIngredientes.DropDownStyle = ComboBoxStyle.DropDownList;
 
             dataReceta.AutoGenerateColumns = false;
             cargarCatalogo();
@@ -50,6 +51,16 @@ namespace GestionInventarioFoodStruck.Views
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtCantidad.Text) || cmbIngredientes.SelectedValue == null)
+            {
+                MessageBox.Show("Por favor, completa todos los campos de texto.");
+                return;
+            }
+            if (float.Parse(txtCantidad.Text) < 0.0f) {
+                MessageBox.Show("El campo cantidad debe ser positivo.");
+                return;
+            }
+
             Insumos seleccionado = (Insumos)cmbIngredientes.SelectedItem;
 
             Receta nueva = new Receta();
@@ -99,7 +110,11 @@ namespace GestionInventarioFoodStruck.Views
             float iva = subtotalNeto * 0.19f;
             float totalFinal = subtotalNeto + iva;
 
-            lblPrecioSumado.Text = $"Neto: {subtotalNeto:C0} | IVA: {iva:C0} | Total: {totalFinal:C0}";
+            double netoRedondo = Math.Round(subtotalNeto, 0);
+            double ivaRedondo = Math.Round(iva, 0);
+            double totalRedondo = Math.Round(totalFinal, 0);
+
+            lblPrecioSumado.Text = $"Neto: ${netoRedondo:N0} | IVA: ${ivaRedondo:N0} | Total: ${totalRedondo:N0}";
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -117,7 +132,7 @@ namespace GestionInventarioFoodStruck.Views
                 if (insumo != null)
                     subtotalParaDB += calcularNetoRenglon(insumo.PrecioUnitario1, item.CantidadRequerida1);
             }
-            float precioFinalConIva = subtotalParaDB * 1.19f;
+            float precioFinalConIva = (float)Math.Round(subtotalParaDB * 1.19f, 0);
 
             bool exito;
 
@@ -182,6 +197,21 @@ namespace GestionInventarioFoodStruck.Views
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //para permitir 1 coma decimal no lo hice yo pero lo otro si
+            //este de abajo permite numeros y el borrar pero no letras ni espacios
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

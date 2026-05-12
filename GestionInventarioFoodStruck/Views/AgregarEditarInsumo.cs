@@ -67,10 +67,14 @@ namespace GestionInventarioFoodStruck.Views
         {
             try
             {
-                
+
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtStockActual.Text) || string.IsNullOrWhiteSpace(txtPrecioUnitario.Text))
                 {
                     MessageBox.Show("Por favor, completa todos los campos de texto.");
+                    return;
+                }
+                if (float.Parse(txtPrecioUnitario.Text) < 0 || float.Parse(txtStockActual.Text)<0) {
+                    MessageBox.Show("El precio y el stock debe ser numeros positivos..");
                     return;
                 }
 

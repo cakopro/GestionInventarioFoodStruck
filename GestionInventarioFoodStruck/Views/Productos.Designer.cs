@@ -34,15 +34,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataIngredientes = new System.Windows.Forms.DataGridView();
             this.dataProductos = new System.Windows.Forms.DataGridView();
+            this.Id1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioVenta1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.Id1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioVenta1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadRequerida1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnidadMedida1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,8 +63,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataIngredientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataIngredientes.ColumnHeadersHeight = 46;
-            this.dataIngredientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataIngredientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataIngredientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NombreInsumo,
             this.CantidadRequerida1,
@@ -124,6 +123,34 @@
             this.dataProductos.Size = new System.Drawing.Size(636, 218);
             this.dataProductos.TabIndex = 1;
             this.dataProductos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataProductos_CellMouseClick);
+            // 
+            // Id1
+            // 
+            this.Id1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Id1.DataPropertyName = "Id1";
+            this.Id1.HeaderText = "ID";
+            this.Id1.MinimumWidth = 10;
+            this.Id1.Name = "Id1";
+            this.Id1.ReadOnly = true;
+            this.Id1.Width = 91;
+            // 
+            // colNombre
+            // 
+            this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNombre.DataPropertyName = "Nombre1";
+            this.colNombre.HeaderText = "Producto";
+            this.colNombre.MinimumWidth = 10;
+            this.colNombre.Name = "colNombre";
+            this.colNombre.ReadOnly = true;
+            // 
+            // PrecioVenta1
+            // 
+            this.PrecioVenta1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PrecioVenta1.DataPropertyName = "PrecioVenta1";
+            this.PrecioVenta1.HeaderText = "Precio";
+            this.PrecioVenta1.MinimumWidth = 10;
+            this.PrecioVenta1.Name = "PrecioVenta1";
+            this.PrecioVenta1.ReadOnly = true;
             // 
             // label1
             // 
@@ -201,34 +228,6 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // Id1
-            // 
-            this.Id1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Id1.DataPropertyName = "Id1";
-            this.Id1.HeaderText = "ID";
-            this.Id1.MinimumWidth = 10;
-            this.Id1.Name = "Id1";
-            this.Id1.ReadOnly = true;
-            this.Id1.Width = 91;
-            // 
-            // colNombre
-            // 
-            this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNombre.DataPropertyName = "Nombre1";
-            this.colNombre.HeaderText = "Producto";
-            this.colNombre.MinimumWidth = 10;
-            this.colNombre.Name = "colNombre";
-            this.colNombre.ReadOnly = true;
-            // 
-            // PrecioVenta1
-            // 
-            this.PrecioVenta1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.PrecioVenta1.DataPropertyName = "PrecioVenta1";
-            this.PrecioVenta1.HeaderText = "Precio";
-            this.PrecioVenta1.MinimumWidth = 10;
-            this.PrecioVenta1.Name = "PrecioVenta1";
-            this.PrecioVenta1.ReadOnly = true;
-            // 
             // NombreInsumo
             // 
             this.NombreInsumo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -240,13 +239,12 @@
             // 
             // CantidadRequerida1
             // 
-            this.CantidadRequerida1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CantidadRequerida1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.CantidadRequerida1.DataPropertyName = "CantidadRequerida1";
             this.CantidadRequerida1.HeaderText = "Cantidad";
             this.CantidadRequerida1.MinimumWidth = 10;
             this.CantidadRequerida1.Name = "CantidadRequerida1";
             this.CantidadRequerida1.ReadOnly = true;
-            this.CantidadRequerida1.Width = 178;
             // 
             // UnidadMedida1
             // 
@@ -256,6 +254,7 @@
             this.UnidadMedida1.MinimumWidth = 10;
             this.UnidadMedida1.Name = "UnidadMedida1";
             this.UnidadMedida1.ReadOnly = true;
+            this.UnidadMedida1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Productos
             // 
@@ -294,11 +293,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioVentaDataGridViewTextBoxColumn;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreInsumo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadRequerida1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreInsumo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadRequerida1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida1;
     }
 }

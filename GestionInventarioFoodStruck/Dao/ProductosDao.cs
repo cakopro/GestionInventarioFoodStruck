@@ -196,7 +196,7 @@ namespace GestionInventarioFoodStruck.Dao
 
             try
             {
-                string query = "SELECT * FROM Productos";
+                string query = "SELECT * FROM Productos WHERE estado = 1";
 
                 SqlCommand comando = new SqlCommand(query, conectarse);
 

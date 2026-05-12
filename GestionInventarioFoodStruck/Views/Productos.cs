@@ -66,11 +66,11 @@ namespace GestionInventarioFoodStruck.Views
                     }
 
                 }
-                else
+                
+            }else
                 {
                     MessageBox.Show("Dese seleccionar una fila para eliminar.", "Seleccione", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
