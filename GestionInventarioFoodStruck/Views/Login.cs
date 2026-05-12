@@ -1,4 +1,6 @@
-﻿using GestionInventarioFoodStruck.Views;
+﻿using GestionInventarioFoodStruck.Dao;
+using GestionInventarioFoodStruck.Model;
+using GestionInventarioFoodStruck.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,13 +37,11 @@ namespace GestionInventarioFoodStruck
                 MessageBox.Show("Debe ingresar ambos campos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            string usuario = txtUsuario.Text;
-            string contrasena = txtContrasena.Text;
+            Usuario usuarioLogin = new Usuario(txtUsuario.Text, txtContrasena.Text);
 
-            string usuarioCorrecto = "cako";
-            string contrasenaCorrecta = "123";
+            UsuarioDao dao = new UsuarioDao();
 
-            if (usuario == usuarioCorrecto && contrasena == contrasenaCorrecta)
+            if (dao.validarUsuario(usuarioLogin))
             {
                 Principal ventana = new Principal();
                 this.Hide();
@@ -49,9 +49,10 @@ namespace GestionInventarioFoodStruck
             }
             else
             {
-                MessageBox.Show("Usuario o contraseña incorrectos.", "Error de inicio de sesion", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtUsuario.Text = "";
-                txtContrasena.Text = "";
+                MessageBox.Show("Usuario o contraseña incorrectos.", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsuario.Clear();
+                txtContrasena.Clear();
+                txtUsuario.Focus();
             }
         }
 

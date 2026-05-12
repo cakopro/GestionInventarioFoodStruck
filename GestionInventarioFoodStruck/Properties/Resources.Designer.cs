@@ -63,9 +63,29 @@ namespace GestionInventarioFoodStruck.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap acceso {
+            get {
+                object obj = ResourceManager.GetObject("acceso", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap camion {
             get {
                 object obj = ResourceManager.GetObject("camion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cuenta_de_usuario {
+            get {
+                object obj = ResourceManager.GetObject("cuenta-de-usuario", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

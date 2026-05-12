@@ -216,7 +216,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="imagen\acceso.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="imagen\camion.png" />
+    <Content Include="imagen\cuenta-de-usuario.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="imagen\insumo.png" />
     <Content Include="imagen\login.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

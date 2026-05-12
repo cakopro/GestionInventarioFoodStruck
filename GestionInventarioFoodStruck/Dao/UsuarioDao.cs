@@ -15,23 +15,27 @@ namespace GestionInventarioFoodStruck.Dao
         public bool validarUsuario(Usuario usuario)
         {
             Conexion instancia = Conexion.getInstance();
-            SqlConnection conectarse = instancia.Conectarse();
-            try
+            using (SqlConnection conectarse = instancia.Conectarse())
             {
-                string query = "SELECT *FROM USUARIO WHERE usuario = @usuario and contrasena = @contrasena)";
+                try
+                {
+                    string query = "SELECT COUNT(*) FROM Usuario WHERE Nombre = @usuario AND Contrasena = @contrasena";
 
-                SqlCommand comando = new SqlCommand(query, conectarse);
-                comando.Parameters.AddWithValue("@usuario", usuario.Nombre);
-                comando.Parameters.AddWithValue("@contrasena", usuario.Contrasena);
+                    SqlCommand comando = new SqlCommand(query, conectarse);
+                    comando.Parameters.AddWithValue("@usuario", usuario.Nombre);
+                    comando.Parameters.AddWithValue("@contrasena", usuario.Contrasena);
 
-                conectarse.Open();
-                comando.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show($"Error al agregar: {e.Message}");
-                return false;
+                    conectarse.Open();
+
+                    int resultado = Convert.ToInt32(comando.ExecuteScalar());
+
+                    return resultado > 0;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"Error al agregar: {e.Message}");
+                    return false;
+                }
             }
         }
     }
